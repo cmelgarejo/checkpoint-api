@@ -40,6 +40,14 @@ class UserController {
     response.status(201)
     return token
   }
+
+  async generateJWTKey({ response, auth }) {
+    const user = await auth.getUser()
+    const authAPI = await auth.authenticator('jwt')
+    const token = await authAPI.generate(user)
+    response.status(201)
+    return token
+  }
 }
 
 module.exports = UserController

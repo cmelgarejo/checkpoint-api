@@ -1,5 +1,3 @@
-'use strict'
-
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -13,9 +11,29 @@
 |
 */
 
-/** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
+Route.get('/', () => ({ api: 'is up' }))
+
+/*
+|--------------------------------------------------------------------------
+| v1
+|--------------------------------------------------------------------------
+*/
+Route.group(() => {
+  Route.post('users/token', 'UserController.generateJWTKey')
+  Route.post('users/apikey', 'UserController.generateAPIKey')
 })
+  .prefix('/v1')
+  .namespace('/v1')
+  .middleware(['auth:basic'])
+
+Route.group(() => {
+  // Users
+  Route.resource('users', 'UserController').validator(
+    new Map([[['users.store'], ['User']], [['users.update'], ['User']]]),
+  )
+})
+  .prefix('/v1')
+  .namespace('/v1')
+  .middleware(['auth', 'tokenMetrics', 'jsonApi:ro'])
