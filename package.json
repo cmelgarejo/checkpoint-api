@@ -31,6 +31,7 @@
     "@adonisjs/validator": "^5.0.4",
     "@dinevillar/adonis-json-api-serializer": "github:cmelgarejo/adonis-json-api-serializer",
     "adonis-acl": "github:cmelgarejo/adonis-acl",
+    "pem": "^1.13.1",
     "pg": "^7.5.0"
   },
   "devDependencies": {},

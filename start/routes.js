@@ -21,6 +21,7 @@ Route.get('/', () => ({ up: true }))
 |--------------------------------------------------------------------------
 */
 Route.group(() => {
+  // Route.post('users/token/refresh', 'UserController.refreshJWTKey')
   Route.post('users/token', 'UserController.generateJWTKey')
   Route.post('users/apikey', 'UserController.generateAPIKey')
 })
@@ -31,9 +32,9 @@ Route.group(() => {
 Route.group(() => {
   // Users
   Route.resource('users', 'UserController').validator(
-    new Map([[['users.store'], ['User']], [['users.update'], ['User']]]),
+    new Map([[['users.store'], ['User']], [['users.update'], ['User']]])
   )
 })
   .prefix('/v1')
   .namespace('/v1')
-  .middleware(['auth', 'tokenMetrics', 'jsonApi:ro'])
+  .middleware(['auth:jwt,api', 'tokenMetrics', 'jsonApi'])
