@@ -2,9 +2,9 @@
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
-const tableName = 'asset'
+const tableName = 'asset_types'
 
-class AssetSchema extends Schema {
+class AssetTypeSchema extends Schema {
   async up() {
     this.create(tableName, table => {
       table
@@ -27,4 +27,4 @@ class AssetSchema extends Schema {
   }
 }
 
-module.exports = AssetSchema
+module.exports = AssetTypeSchema
