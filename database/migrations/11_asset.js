@@ -14,7 +14,7 @@ class AssetSchema extends Schema {
       table.text('name').notNullable()
       table.text('description').notNullable()
       table.float('mileage').notNullable()
-      table.boolean('active').defaultTo(false)
+      table.boolean('active').defaultTo(true)
       table.jsonb('images')
       table.jsonb('metadata')
       table.timestamps()
