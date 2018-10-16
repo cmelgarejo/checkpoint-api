@@ -3,6 +3,7 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 const tableName = 'asset'
+const assetTypeTableName = 'asset_types'
 
 class AssetSchema extends Schema {
   async up() {
@@ -11,6 +12,10 @@ class AssetSchema extends Schema {
         .uuid('id')
         .unique()
         .defaultTo(this.db.raw('public.gen_random_uuid()'))
+      table
+        .uuid('asset_type_id')
+        .references('id')
+        .inTable(assetTypeTableName)
       table.text('name').notNullable()
       table.text('description').notNullable()
       table.float('mileage').notNullable()

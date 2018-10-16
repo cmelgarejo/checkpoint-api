@@ -3,17 +3,17 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 
-class AssetGroupSchema extends Schema {
+class DriverSchema extends Schema {
   up () {
-    this.create('asset_groups', (table) => {
+    this.create('drivers', (table) => {
       table.increments()
       table.timestamps()
     })
   }
 
   down () {
-    this.drop('asset_groups')
+    this.drop('drivers')
   }
 }
 
-module.exports = AssetGroupSchema
+module.exports = DriverSchema

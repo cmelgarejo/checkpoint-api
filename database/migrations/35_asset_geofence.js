@@ -3,17 +3,17 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 
-class AssetSensorRecordSchema extends Schema {
+class AssetGeofenceSchema extends Schema {
   up () {
-    this.create('asset_sensor_records', (table) => {
+    this.create('asset_geofences', (table) => {
       table.increments()
       table.timestamps()
     })
   }
 
   down () {
-    this.drop('asset_sensor_records')
+    this.drop('asset_geofences')
   }
 }
 
-module.exports = AssetSensorRecordSchema
+module.exports = AssetGeofenceSchema

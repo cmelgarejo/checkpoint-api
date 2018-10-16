@@ -3,17 +3,17 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 
-class AssetEventSchema extends Schema {
+class DeviceSimcardSchema extends Schema {
   up () {
-    this.create('asset_events', (table) => {
+    this.create('device_simcards', (table) => {
       table.increments()
       table.timestamps()
     })
   }
 
   down () {
-    this.drop('asset_events')
+    this.drop('device_simcards')
   }
 }
 
-module.exports = AssetEventSchema
+module.exports = DeviceSimcardSchema
