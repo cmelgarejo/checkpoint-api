@@ -11,7 +11,7 @@ class AssetPositionSchema extends Schema {
     })
   }
 
-  down() {
+  async down() {
     this.drop('asset_positions')
   }
 }

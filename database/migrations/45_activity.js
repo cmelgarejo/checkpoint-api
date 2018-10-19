@@ -11,7 +11,7 @@ class ActivitySchema extends Schema {
     })
   }
 
-  down() {
+  async down() {
     this.drop('activities')
   }
 }

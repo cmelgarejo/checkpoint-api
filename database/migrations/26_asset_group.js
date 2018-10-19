@@ -16,7 +16,7 @@ class AssetGroupSchema extends Schema {
     })
   }
 
-  down() {
+  async down() {
     this.drop('asset_groups')
   }
 }

@@ -19,8 +19,8 @@ class TokensSchema extends Schema {
     })
   }
 
-  down() {
-    this.drop(tableName)
+  async down() {
+    await this.db.raw(`DROP TABLE IF EXISTS ${tableName} CASCADE;`) // this.drop(tableName)
   }
 }
 

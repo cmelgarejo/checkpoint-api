@@ -2,20 +2,34 @@
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
-
+const tableName = 'devices'
+const userTableName = 'users'
+const deviceTypeTableName = 'device_types'
 class DeviceSchema extends Schema {
   up() {
-    this.create('devices', table => {
+    this.create(tableName, table => {
+      table
+        .integer('device_type_id')
+        .references('id')
+        .inTable(deviceTypeTableName)
       table
         .uuid('user_id')
         .references('id')
-        .inTable(usersTablename)
+        .inTable(userTableName)
+      table.text('unit_id').notNullable()
+      table.text('imei')
+      table.text('uuid')
+      table.jsonb('images')
+      table.jsonb('metadata')
+      table.boolean('active').defaultTo(true)
+      table.dateTime('activated_at').defaultTo(knex.fn.now())
+      table.dateTime('deactivated_at')
       table.timestamps()
     })
   }
 
-  down() {
-    this.drop('devices')
+  async down() {
+    await this.db.raw(`DROP TABLE IF EXISTS ${tableName} CASCADE;`)
   }
 }
 

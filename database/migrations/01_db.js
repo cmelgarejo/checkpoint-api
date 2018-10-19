@@ -11,7 +11,7 @@ class SetupDbSchema extends Schema {
     )
   }
 
-  async down() {}
+  down() {}
 }
 
 module.exports = SetupDbSchema

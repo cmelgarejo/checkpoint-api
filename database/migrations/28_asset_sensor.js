@@ -26,7 +26,7 @@ class AssetSensorSchema extends Schema {
   }
 
   async down() {
-    // this.drop(tableName)
+    // await this.db.raw(`DROP TABLE IF EXISTS ${tableName} CASCADE;`) // this.drop(tableName)
     await this.db.raw(`DROP TABLE IF EXISTS ${tableName} CASCADE;`)
   }
 }

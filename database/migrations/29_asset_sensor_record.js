@@ -15,7 +15,7 @@ class AssetSensorRecordSchema extends Schema {
     })
   }
 
-  down() {
+  async down() {
     this.drop('asset_sensor_records')
   }
 }
