@@ -9,6 +9,10 @@ class DeviceSchema extends Schema {
   up() {
     this.create(tableName, table => {
       table
+        .uuid('id')
+        .unique()
+        .defaultTo(this.db.raw('public.gen_random_uuid()'))
+      table
         .integer('device_type_id')
         .references('id')
         .inTable(deviceTypeTableName)

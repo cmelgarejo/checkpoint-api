@@ -2,10 +2,10 @@
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
-const tableName = 'device_type_events'
+const tableName = 'device_type_sensors'
 const deviceTypeTableName = 'device_types'
 
-class DeviceTypeEventSchema extends Schema {
+class DeviceTypeSensorSchema extends Schema {
   up() {
     this.create(tableName, table => {
       table.increments()
@@ -13,8 +13,9 @@ class DeviceTypeEventSchema extends Schema {
         .integer('device_type_id')
         .references('id')
         .inTable(deviceTypeTableName)
-      table.text('event_code')
+      table.text('name')
       table.text('description')
+      table.text('unit')
       table.timestamps()
     })
   }
@@ -24,4 +25,4 @@ class DeviceTypeEventSchema extends Schema {
   }
 }
 
-module.exports = DeviceTypeEventSchema
+module.exports = DeviceTypeSensorSchema

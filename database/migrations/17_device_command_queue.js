@@ -2,17 +2,26 @@
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
+const tableName = 'device_command_queues'
+const deviceTableName = 'devices'
 
 class DeviceCommandQueueSchema extends Schema {
-  up () {
-    this.create('device_command_queues', (table) => {
+  up() {
+    this.create(tableName, table => {
       table.increments()
+      table
+        .integer('device_id')
+        .references('id')
+        .inTable(deviceTableName)
+      table.text('command')
+      table.boolean('sent').defaultTo(false)
+      table.dateTime('sent_at')
       table.timestamps()
     })
   }
 
-  down () {
-    this.drop('device_command_queues')
+  down() {
+    this.drop(tableName)
   }
 }
 

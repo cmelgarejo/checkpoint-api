@@ -33,6 +33,10 @@ class User extends Model {
     return ['password']
   }
 
+  static get Serializer() {
+    return 'JsonApi/Serializer/LucidSerializer' // Override Lucid/VanillaSerializer
+  }
+
   /**
    * A relationship on tokens is required for auth to
    * work. Since features like `refreshTokens` or
@@ -58,8 +62,8 @@ class User extends Model {
     return this.hasOne('App/Models/Token').where('is_revoked', false)
   }
 
-  static get Serializer() {
-    return 'JsonApi/Serializer/LucidSerializer' // Override Lucid/VanillaSerializer
+  devices() {
+    return this.hasMany('App/Models/Device')
   }
 }
 

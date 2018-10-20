@@ -19,6 +19,9 @@ class UserSchema extends Schema {
         .notNullable()
         .unique()
       table.string('password', 60).notNullable()
+      table.boolean('active').defaultTo(true)
+      table.dateTime('activated_at').defaultTo(knex.fn.now())
+      table.dateTime('deactivated_at')
       table.timestamps()
     })
   }

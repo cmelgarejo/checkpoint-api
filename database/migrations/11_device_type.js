@@ -11,7 +11,6 @@ class DeviceTypeSchema extends Schema {
       table.text('description')
       table.integer('accuracy')
       table.jsonb('images')
-      table.boolean('active').defaultTo(true)
       table.jsonb('metadata')
       table.timestamps()
     })
