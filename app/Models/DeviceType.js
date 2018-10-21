@@ -11,6 +11,14 @@ class DeviceType extends Model {
   commands() {
     return this.hasMany('App/Models/DeviceTypeCommand')
   }
+
+  events() {
+    return this.hasMany('App/Models/DeviceTypeEvent')
+  }
+
+  sensors() {
+    return this.hasMany('App/Models/DeviceTypeSensor')
+  }
 }
 
 module.exports = DeviceType

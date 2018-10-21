@@ -3,6 +3,6 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
 
-class DeviceSensorType extends Model {}
+class DeviceTypeSensor extends Model {}
 
-module.exports = DeviceSensorType
+module.exports = DeviceTypeSensor
