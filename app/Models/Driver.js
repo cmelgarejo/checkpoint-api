@@ -4,6 +4,9 @@
 const Model = use('Model')
 
 class Driver extends Model {
+  assets() {
+    return this.manyThrough('App/Models/AssetDriver', 'assets')
+  }
 }
 
 module.exports = Driver

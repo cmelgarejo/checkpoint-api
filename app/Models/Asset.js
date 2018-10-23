@@ -11,6 +11,10 @@ class Asset extends Model {
   devices() {
     return this.manyThrough('App/Models/AssetDevice', 'devices')
   }
+
+  drivers() {
+    return this.manyThrough('App/Models/AssetDriver', 'drivers')
+  }
 }
 
 module.exports = Asset

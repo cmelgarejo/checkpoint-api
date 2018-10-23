@@ -18,6 +18,10 @@ class Device extends Model {
   simcards() {
     return this.hasMany('App/Models/Simcard')
   }
+
+  assets() {
+    return this.manyThrough('App/Models/AssetDevice', 'assets')
+  }
 }
 
 module.exports = Device
