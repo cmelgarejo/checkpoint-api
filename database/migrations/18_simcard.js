@@ -25,6 +25,7 @@ class SimcardSchema extends Schema {
       table.text('puk2')
       table.text('billing_group')
       table.text('billing_date')
+      table.jsonb('metadata')
       table.boolean('active').defaultTo(true)
       table.dateTime('activated_at').defaultTo(knex.fn.now())
       table.dateTime('deactivated_at')

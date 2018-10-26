@@ -15,6 +15,7 @@ class DeviceTypeCommandSchema extends Schema {
         .inTable(deviceTypeTableName)
       table.text('command')
       table.text('description')
+      table.jsonb('metadata')
       table.timestamps()
     })
   }

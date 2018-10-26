@@ -3,7 +3,8 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 const tableName = 'asset_events'
-
+const assetTableName = 'assets'
+const deviceTypeEventsTableName = 'device_type_events'
 class AssetTypeSchema extends Schema {
   async up() {
     this.create(tableName, table => {
@@ -15,8 +16,12 @@ class AssetTypeSchema extends Schema {
         .integer('asset_id')
         .references('id')
         .inTable(assetTableName)
+      table
+        .integer('device_type_event_id')
+        .references('id')
+        .inTable(deviceTypeTableName)
       table.text('name').notNullable()
-      table.text('description').notNullable()
+      table.text('description')
       table.boolean('active').defaultTo(true)
       table.jsonb('images')
       table.jsonb('metadata')
