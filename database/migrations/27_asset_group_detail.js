@@ -13,8 +13,12 @@ class AssetGroupDetailSchema extends Schema {
         .integer('asset_id')
         .references('id')
         .inTable(assetGroupTableName)
-      table.text('emails')
-      table.text('phones')
+      table
+        .text('emails')
+        .comment('The contacts that will be notified of any activity')
+      table
+        .text('phones')
+        .comment('The contacts that will be notified of any activity')
       table.jsonb('metadata')
       table.timestamps()
     })

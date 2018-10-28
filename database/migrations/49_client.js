@@ -2,17 +2,17 @@
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
-
+const tableName = 'clients'
 class ClientSchema extends Schema {
-  up () {
-    this.create('clients', (table) => {
+  up() {
+    this.create(tableName, table => {
       table.increments()
       table.timestamps()
     })
   }
 
-  down () {
-    this.drop('clients')
+  down() {
+    this.drop(tableName)
   }
 }
 

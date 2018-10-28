@@ -2,17 +2,17 @@
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
-
+const tableName = 'measure_units'
 class MeasureUnitSchema extends Schema {
-  up () {
-    this.create('measure_units', (table) => {
+  up() {
+    this.create(tableName, table => {
       table.increments()
       table.timestamps()
     })
   }
 
-  down () {
-    this.drop('measure_units')
+  down() {
+    this.drop(tableName)
   }
 }
 

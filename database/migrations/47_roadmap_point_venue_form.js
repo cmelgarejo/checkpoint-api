@@ -2,17 +2,17 @@
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
-
+const tableName = 'roadmap_point_venue_forms'
 class RoadmapPointVenueFormSchema extends Schema {
-  up () {
-    this.create('roadmap_point_venue_forms', (table) => {
+  up() {
+    this.create(tableName, table => {
       table.increments()
       table.timestamps()
     })
   }
 
-  down () {
-    this.drop('roadmap_point_venue_forms')
+  down() {
+    this.drop(tableName)
   }
 }
 

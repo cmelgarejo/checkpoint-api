@@ -20,8 +20,12 @@ class AssetGroupSchema extends Schema {
         .references('id')
         .inTable(userTableName)
       table.text('name')
-      table.text('emails')
-      table.text('phones')
+      table
+        .text('emails')
+        .comment('By default these contacts will be notified of any activity')
+      table
+        .text('phones')
+        .comment('By default these contacts will be notified of any activity')
       table.jsonb('metadata')
       table.boolean('active').defaultTo(true)
       table.dateTime('activated_at').defaultTo(knex.fn.now())
