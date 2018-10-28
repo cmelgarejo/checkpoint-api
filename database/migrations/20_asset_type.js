@@ -5,7 +5,7 @@ const Schema = use('Schema')
 const tableName = 'asset_types'
 
 class AssetTypeSchema extends Schema {
-  async up() {
+  up() {
     this.create(tableName, table => {
       table
         .uuid('id')

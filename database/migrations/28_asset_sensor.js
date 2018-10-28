@@ -6,7 +6,7 @@ const tableName = 'asset_sensors'
 const assetTableName = 'asset'
 
 class AssetSensorSchema extends Schema {
-  async up() {
+  up() {
     this.create(tableName, table => {
       table
         .uuid('id')

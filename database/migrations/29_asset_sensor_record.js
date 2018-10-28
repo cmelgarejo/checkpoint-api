@@ -11,12 +11,14 @@ class AssetSensorRecordSchema extends Schema {
         .integer('asset_sensor_id')
         .references('id')
         .inTable(assetSensorTableName)
+      table.text('value')
+      table.jsonb('metadata')
       table.timestamps()
     })
   }
 
-  async down() {
-    this.drop('asset_sensor_records')
+  down() {
+    this.drop(tableName)
   }
 }
 

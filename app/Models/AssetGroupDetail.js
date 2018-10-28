@@ -4,6 +4,9 @@
 const Model = use('Model')
 
 class AssetGroupDetail extends Model {
+  assets() {
+    return this.hasMany('App/Models/Asset')
+  }
 }
 
 module.exports = AssetGroupDetail

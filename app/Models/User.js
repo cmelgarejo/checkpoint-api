@@ -65,6 +65,10 @@ class User extends Model {
   devices() {
     return this.hasMany('App/Models/Device')
   }
+
+  assets() {
+    return this.manyThrough('App/Models/AssetGroup', 'assets')
+  }
 }
 
 module.exports = User

@@ -4,6 +4,9 @@
 const Model = use('Model')
 
 class AssetGroup extends Model {
+  assets() {
+    return this.manyThrough('App/Models/AssetGroupDetail', 'assets')
+  }
 }
 
 module.exports = AssetGroup

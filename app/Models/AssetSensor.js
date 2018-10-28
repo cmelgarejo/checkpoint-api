@@ -4,6 +4,9 @@
 const Model = use('Model')
 
 class AssetSensor extends Model {
+  records() {
+    return this.hasMany('App/Models/AssetSensorRecord')
+  }
 }
 
 module.exports = AssetSensor

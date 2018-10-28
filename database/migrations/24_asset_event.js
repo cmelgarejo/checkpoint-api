@@ -5,8 +5,9 @@ const Schema = use('Schema')
 const tableName = 'asset_events'
 const assetTableName = 'assets'
 const deviceTypeEventsTableName = 'device_type_events'
-class AssetTypeSchema extends Schema {
-  async up() {
+
+class AssetEventSchema extends Schema {
+  up() {
     this.create(tableName, table => {
       table
         .uuid('id')
@@ -19,7 +20,7 @@ class AssetTypeSchema extends Schema {
       table
         .integer('device_type_event_id')
         .references('id')
-        .inTable(deviceTypeTableName)
+        .inTable(deviceTypeEventsTableName)
       table.text('name').notNullable()
       table.text('description')
       table.boolean('active').defaultTo(true)

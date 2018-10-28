@@ -4,20 +4,34 @@
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
+const tableName = 'asset_groups'
+const assetTableName = 'assets'
+const userTableName = 'users'
 
 class AssetGroupSchema extends Schema {
   up() {
-    this.create('asset_groups', table => {
+    this.create(tableName, table => {
       table
-        .integer('asset_id')
+        .uuid('id')
+        .unique()
+        .defaultTo(this.db.raw('public.gen_random_uuid()'))
+      table
+        .integer('user_id')
         .references('id')
-        .inTable(assetTableName)
+        .inTable(userTableName)
+      table.text('name')
+      table.text('emails')
+      table.text('phones')
+      table.jsonb('metadata')
+      table.boolean('active').defaultTo(true)
+      table.dateTime('activated_at').defaultTo(knex.fn.now())
+      table.dateTime('deactivated_at')
       table.timestamps()
     })
   }
 
   async down() {
-    this.drop('asset_groups')
+    this.drop(tableName)
   }
 }
 

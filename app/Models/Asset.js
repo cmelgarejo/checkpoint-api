@@ -15,6 +15,14 @@ class Asset extends Model {
   drivers() {
     return this.manyThrough('App/Models/AssetDriver', 'drivers')
   }
+
+  events() {
+    return this.hasMany('App/Models/AssetEvent')
+  }
+
+  sensors() {
+    return this.hasMany('App/Models/AssetSensor')
+  }
 }
 
 module.exports = Asset

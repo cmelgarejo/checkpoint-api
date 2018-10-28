@@ -4,6 +4,9 @@
 const Model = use('Model')
 
 class AssetEvent extends Model {
+  records() {
+    return this.hasMany('App/Models/AssetEventRecord')
+  }
 }
 
 module.exports = AssetEvent
