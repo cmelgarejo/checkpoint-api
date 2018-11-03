@@ -1,11 +1,23 @@
 # Node modules
-node_modules
+node_modules/
 
 # Adonis directory for storing tmp files
 tmp
 
 # Environment variables, never commit this file
-.env
+#.env
+.env.example
 
 # The development sqlite file
 database/development.sqlite
+
+# docker
+Dockerfile
+.dockerignore
+
+# misc
+.gitignore
+.eslintrc
+.editorconfig
+.git
+README.md

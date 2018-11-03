@@ -1,0 +1,41 @@
+version: '3'
+services:
+  pgsql:
+    image: postgres
+    restart: always
+    environment:
+    ports:
+      - "6543:5432"
+    volumes:
+      - database:/var/lib/postgresql
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+  api:
+    build: .
+    ports:
+      - '3333:3333'
+    restart: always
+    volumes:
+      - .:/code
+    depends_on:
+      - pgsql
+    environment:
+      HOST: ${HOST}
+      PORT: ${PORT}
+      NODE_ENV: ${NODE_ENV}
+      APP_NAME: ${APP_NAME}
+      APP_URL: ${APP_URL}
+      CACHE_VIEWS: ${CACHE_VIEWS}
+      APP_KEY: ${APP_KEY}
+      DB_CONNECTION: ${DB_CONNECTION}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE: ${DB_DATABASE}
+      HASH_DRIVER: ${HASH_DRIVER}
+volumes:
+  database:
+    driver: "local"
