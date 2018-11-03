@@ -3,7 +3,7 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 const tableName = 'asset_sensors'
-const assetTableName = 'asset'
+const assetTableName = 'assets'
 
 class AssetSensorSchema extends Schema {
   up() {

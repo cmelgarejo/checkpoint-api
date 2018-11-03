@@ -4,6 +4,7 @@
 const Schema = use('Schema')
 const tableName = 'asset_event_records'
 const assetEventTableName = 'asset_events'
+
 class AssetEventRecordSchema extends Schema {
   up() {
     this.create(tableName, table => {

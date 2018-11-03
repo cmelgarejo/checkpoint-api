@@ -2,20 +2,24 @@
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
-const tableName = 'drivers'
-class DriverSchema extends Schema {
+const tableName = 'clients'
+const userTableName = 'users'
+
+class ClientSchema extends Schema {
   up() {
     this.create(tableName, table => {
       table
         .uuid('id')
         .unique()
         .defaultTo(this.db.raw('public.gen_random_uuid()'))
+      table
+        .uuid('user_id')
+        .references('id')
+        .inTable(userTableName)
       table.text('name').notNullable()
-      table.text('emails')
-      table.text('phones')
-      table.boolean('active').defaultTo(true)
-      table.dateTime('activated_at').defaultTo(knex.fn.now())
-      table.dateTime('deactivated_at')
+      table.text('description')
+      table.jsonb('images')
+      table.jsonb('metadata')
       table.timestamps()
     })
   }
@@ -25,4 +29,4 @@ class DriverSchema extends Schema {
   }
 }
 
-module.exports = DriverSchema
+module.exports = ClientSchema

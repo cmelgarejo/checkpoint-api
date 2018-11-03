@@ -4,6 +4,7 @@
 const Schema = use('Schema')
 const tableName = 'simcards'
 const deviceTableName = 'devices'
+
 class SimcardSchema extends Schema {
   up() {
     this.create(tableName, table => {

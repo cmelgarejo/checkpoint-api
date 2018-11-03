@@ -3,6 +3,7 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 const tableName = 'device_types'
+
 class DeviceTypeSchema extends Schema {
   up() {
     this.create(tableName, table => {

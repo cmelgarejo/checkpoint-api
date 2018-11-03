@@ -4,6 +4,7 @@
 const Schema = use('Schema')
 const tableName = 'pois'
 const userTableName = 'users'
+
 class PoiSchema extends Schema {
   up() {
     this.create(tableName, table => {

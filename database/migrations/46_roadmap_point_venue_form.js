@@ -3,6 +3,7 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 const tableName = 'roadmap_point_venue_forms'
+
 class RoadmapPointVenueFormSchema extends Schema {
   up() {
     this.create(tableName, table => {

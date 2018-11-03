@@ -5,6 +5,7 @@ const Schema = use('Schema')
 const tableName = 'devices'
 const userTableName = 'users'
 const deviceTypeTableName = 'device_types'
+
 class DeviceSchema extends Schema {
   up() {
     this.create(tableName, table => {

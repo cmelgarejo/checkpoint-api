@@ -2,8 +2,9 @@
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
-const tableName = 'measure_units'
-class MeasureUnitSchema extends Schema {
+const tableName = 'roadmap_point_venue_form_details'
+
+class RoadmapPointVenueFormDetailSchema extends Schema {
   up() {
     this.create(tableName, table => {
       table.increments()
@@ -16,4 +17,4 @@ class MeasureUnitSchema extends Schema {
   }
 }
 
-module.exports = MeasureUnitSchema
+module.exports = RoadmapPointVenueFormDetailSchema

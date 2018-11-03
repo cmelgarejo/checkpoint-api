@@ -2,15 +2,13 @@
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
-const tableName = 'venues'
+const tableName = 'forms'
 const userTableName = 'users'
-class VenueSchema extends Schema {
+
+class FormSchema extends Schema {
   up() {
     this.create(tableName, table => {
-      table
-        .uuid('id')
-        .unique()
-        .defaultTo(this.db.raw('public.gen_random_uuid()'))
+      table.increments()
       table
         .uuid('user_id')
         .references('id')
@@ -24,4 +22,4 @@ class VenueSchema extends Schema {
   }
 }
 
-module.exports = VenueSchema
+module.exports = FormSchema

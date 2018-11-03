@@ -3,8 +3,9 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 const tableName = 'asset_records'
-const assetTableName = 'asset'
-const deviceTableName = 'device'
+const assetTableName = 'assets'
+const deviceTableName = 'devices'
+
 class AssetRecordSchema extends Schema {
   up() {
     this.create(tableName, table => {

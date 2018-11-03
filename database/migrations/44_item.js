@@ -2,11 +2,15 @@
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
-const tableName = 'marks'
-class MarkSchema extends Schema {
+const tableName = 'items'
+
+class ItemSchema extends Schema {
   up() {
     this.create(tableName, table => {
-      table.increments()
+      table
+        .uuid('id')
+        .unique()
+        .defaultTo(this.db.raw('public.gen_random_uuid()'))
       table.timestamps()
     })
   }
@@ -16,4 +20,4 @@ class MarkSchema extends Schema {
   }
 }
 
-module.exports = MarkSchema
+module.exports = ItemSchema
