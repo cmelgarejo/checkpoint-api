@@ -3,7 +3,7 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 const tableName = 'drivers'
-
+const userTableName = 'users'
 class DriverSchema extends Schema {
   up() {
     this.create(tableName, table => {
@@ -11,6 +11,10 @@ class DriverSchema extends Schema {
         .uuid('id')
         .unique()
         .defaultTo(this.db.raw('public.gen_random_uuid()'))
+      table
+        .uuid('user_id')
+        .references('id')
+        .inTable(userTableName)
       table.text('name').notNullable()
       table.text('emails')
       table.text('phones')

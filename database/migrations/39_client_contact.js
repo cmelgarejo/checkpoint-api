@@ -3,7 +3,7 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 const tableName = 'client_contacts'
-const clientTableName = 'client'
+const clientTableName = 'clients'
 
 class ClientContactSchema extends Schema {
   up() {

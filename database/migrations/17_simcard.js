@@ -4,6 +4,7 @@
 const Schema = use('Schema')
 const tableName = 'simcards'
 const deviceTableName = 'devices'
+const userTableName = 'users'
 
 class SimcardSchema extends Schema {
   up() {
@@ -16,6 +17,10 @@ class SimcardSchema extends Schema {
         .uuid('device_id')
         .references('id')
         .inTable(deviceTableName)
+      table
+        .uuid('user_id')
+        .references('id')
+        .inTable(userTableName)
       table
         .text('number')
         .unique()

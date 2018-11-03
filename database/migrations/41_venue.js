@@ -19,14 +19,24 @@ class VenueSchema extends Schema {
         .references('id')
         .inTable(userTableName)
       table
-        .uuid('user_id')
+        .uuid('client_id')
         .references('id')
         .inTable(clientTableName)
       table
-        .uuid('user_id')
+        .uuid('client_contact_id')
         .references('id')
         .inTable(clientContactTableName)
-
+      table.text('name').notNullable()
+      table.text('description')
+      table.text('address')
+      table.float('lat')
+      table.float('lon')
+      table.integer('detection_radius')
+      table.jsonb('images')
+      table.jsonb('metadata')
+      table.boolean('active').defaultTo(true)
+      table.dateTime('activated_at').defaultTo(knex.fn.now())
+      table.dateTime('deactivated_at')
       table.timestamps()
     })
   }

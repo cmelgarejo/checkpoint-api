@@ -4,6 +4,7 @@
 const Schema = use('Schema')
 const tableName = 'assets'
 const assetTypeTableName = 'asset_types'
+const userTableName = 'users'
 
 class AssetSchema extends Schema {
   up() {
@@ -16,10 +17,16 @@ class AssetSchema extends Schema {
         .uuid('asset_type_id')
         .references('id')
         .inTable(assetTypeTableName)
+      table
+        .uuid('user_id')
+        .references('id')
+        .inTable(userTableName)
       table.text('name').notNullable()
-      table.text('description').notNullable()
-      table.float('mileage').notNullable()
+      table.text('description')
+      table.float('mileage')
       table.boolean('active').defaultTo(true)
+      table.dateTime('activated_at').defaultTo(knex.fn.now())
+      table.dateTime('deactivated_at')
       table.jsonb('images')
       table.jsonb('metadata')
       table.timestamps()

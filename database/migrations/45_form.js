@@ -13,6 +13,11 @@ class FormSchema extends Schema {
         .uuid('user_id')
         .references('id')
         .inTable(userTableName)
+      table.text('name').notNullable()
+      table.text('description')
+      table.text('notes')
+      table.jsonb('images')
+      table.jsonb('metadata')
       table.timestamps()
     })
   }

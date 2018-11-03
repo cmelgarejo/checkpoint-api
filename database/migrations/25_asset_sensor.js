@@ -19,6 +19,8 @@ class AssetSensorSchema extends Schema {
       table.text('name').notNullable()
       table.text('description').notNullable()
       table.boolean('active').defaultTo(true)
+      table.dateTime('activated_at').defaultTo(knex.fn.now())
+      table.dateTime('deactivated_at')
       table.jsonb('images')
       table.jsonb('metadata')
       table.timestamps()

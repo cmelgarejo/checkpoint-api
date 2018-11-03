@@ -8,6 +8,9 @@ class MeasureUnitSchema extends Schema {
   up() {
     this.create(tableName, table => {
       table.increments()
+      table.text('description').notNullable()
+      table.boolean('event_trigger').defaultTo(false)
+      table.boolean('private').defaultTo(false)
       table.timestamps()
     })
   }

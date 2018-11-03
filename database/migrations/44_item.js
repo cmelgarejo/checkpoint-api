@@ -7,10 +7,22 @@ const tableName = 'items'
 class ItemSchema extends Schema {
   up() {
     this.create(tableName, table => {
+      table.increments()
       table
-        .uuid('id')
-        .unique()
-        .defaultTo(this.db.raw('public.gen_random_uuid()'))
+        .uuid('user_id')
+        .references('id')
+        .inTable(userTableName)
+      table.text('name').notNullable()
+      table
+        .text('code')
+        .comment('Code used by the client to identify item in their system')
+      table.text('description')
+      table.text('notes')
+      table.float('stock')
+      table.float('min_qty')
+      table.float('max_qty')
+      table.jsonb('images')
+      table.jsonb('metadata')
       table.timestamps()
     })
   }
