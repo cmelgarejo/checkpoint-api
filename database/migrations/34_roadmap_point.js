@@ -34,8 +34,8 @@ class RoadmapPointSchema extends Schema {
         .comment('Approximate leave time from the point')
       table.jsonb('metadata')
       table.boolean('active').defaultTo(true)
-      table.dateTime('activated_at').defaultTo(knex.fn.now())
-      table.dateTime('deactivated_at')
+      table.timestamp('activated_at').defaultTo(knex.fn.now())
+      table.timestamp('deactivated_at')
       table.timestamps()
     })
   }

@@ -33,8 +33,8 @@ class SimcardSchema extends Schema {
       table.text('billing_date')
       table.jsonb('metadata')
       table.boolean('active').defaultTo(true)
-      table.dateTime('activated_at').defaultTo(knex.fn.now())
-      table.dateTime('deactivated_at')
+      table.timestamp('activated_at').defaultTo(knex.fn.now())
+      table.timestamp('deactivated_at')
       table.timestamps()
     })
   }

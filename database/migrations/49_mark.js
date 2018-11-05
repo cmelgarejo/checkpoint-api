@@ -2,12 +2,14 @@
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
-const tableName = 'venues'
+const tableName = 'marks'
+const assetTableName = 'assets'
 const userTableName = 'users'
-const clientTableName = 'clients'
+const venueTableName = 'venues'
+const formTableName = 'forms'
 const clientContactTableName = 'client_contacts'
 
-class VenueSchema extends Schema {
+class MarkSchema extends Schema {
   up() {
     this.create(tableName, table => {
       table
@@ -19,24 +21,34 @@ class VenueSchema extends Schema {
         .references('id')
         .inTable(userTableName)
       table
-        .uuid('client_id')
+        .uuid('asset_id')
         .references('id')
-        .inTable(clientTableName)
+        .inTable(assetTableName)
+      table
+        .uuid('venue_id')
+        .references('id')
+        .inTable(venueTableName)
+      table
+        .uuid('form_id')
+        .references('id')
+        .inTable(formTableName)
       table
         .uuid('client_contact_id')
         .references('id')
         .inTable(clientContactTableName)
-      table.text('name').notNullable()
-      table.text('description')
-      table.text('address')
       table.float('lat')
       table.float('lon')
-      table.integer('detection_radius')
+      table.float('speed')
+      table.float('bearing')
+      table.float('accuracy')
+      table.float('altitude')
+      table.text('notes')
+      table.text('address')
       table.jsonb('images')
       table.jsonb('metadata')
-      table.boolean('active').defaultTo(true)
-      table.timestamp('activated_at').defaultTo(knex.fn.now())
-      table.timestamp('deactivated_at')
+      table.timestamp('executed_at')
+      table.timestamp('finished_at')
+      table.timestamp('position_at')
       table.timestamps()
     })
   }
@@ -46,4 +58,4 @@ class VenueSchema extends Schema {
   }
 }
 
-module.exports = VenueSchema
+module.exports = MarkSchema
