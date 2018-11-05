@@ -4,6 +4,13 @@
 const Model = use('Model')
 
 class Driver extends Model {
+  /**
+   * Gets the assets for this driver
+   *
+   * @method assets
+   *
+   * @return {Object}
+   */
   assets() {
     return this.manyThrough('App/Models/AssetDriver', 'assets')
   }

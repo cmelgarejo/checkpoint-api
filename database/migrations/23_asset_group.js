@@ -16,7 +16,7 @@ class AssetGroupSchema extends Schema {
         .unique()
         .defaultTo(this.db.raw('public.gen_random_uuid()'))
       table
-        .integer('user_id')
+        .uuid('user_id')
         .references('id')
         .inTable(userTableName)
       table.text('name')

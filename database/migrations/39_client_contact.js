@@ -22,7 +22,6 @@ class ClientContactSchema extends Schema {
       table.jsonb('images')
       table.jsonb('metadata')
       table.timestamps()
-      table.timestamps()
     })
   }
 

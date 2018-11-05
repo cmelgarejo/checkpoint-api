@@ -24,7 +24,7 @@ class User extends Model {
   static get traits() {
     return [
       '@provider:Adonis/Acl/HasRole',
-      '@provider:Adonis/Acl/HasPermission'
+      '@provider:Adonis/Acl/HasPermission',
       // , 'ClearParams'
     ]
   }
@@ -52,7 +52,7 @@ class User extends Model {
   }
 
   /**
-   * Gets the active token for this use
+   * Gets the token for this user
    *
    * @method activeToken
    *
@@ -62,12 +62,158 @@ class User extends Model {
     return this.hasOne('App/Models/Token').where('is_revoked', false)
   }
 
+  /**
+   * Gets the simcards for this user
+   *
+   * @method simcards
+   *
+   * @return {Object}
+   */
+  simcards() {
+    return this.hasMany('App/Models/Simcard')
+  }
+
+  /**
+   * Gets the devices for this user
+   *
+   * @method devices
+   *
+   * @return {Object}
+   */
   devices() {
     return this.hasMany('App/Models/Device')
   }
 
+  /**
+   * Gets the assets for this user
+   *
+   * @method assets
+   *
+   * @return {Object}
+   */
   assets() {
     return this.manyThrough('App/Models/AssetGroup', 'assets')
+  }
+
+  /**
+   * Gets the assetGroups for this user
+   *
+   * @method assetGroups
+   *
+   * @return {Object}
+   */
+  assetGroups() {
+    return this.hasMany('App/Models/AssetGroup')
+  }
+
+  /**
+   * Gets the geofences for this user
+   *
+   * @method geofences
+   *
+   * @return {Object}
+   */
+  geofences() {
+    return this.hasMany('App/Models/Geofence')
+  }
+
+  /**
+   * Gets the pois for this user
+   *
+   * @method pois
+   *
+   * @return {Object}
+   */
+  pois() {
+    return this.hasMany('App/Models/Poi')
+  }
+
+  /**
+   * Gets the roadmaps for this user
+   *
+   * @method roadmaps
+   *
+   * @return {Object}
+   */
+  roadmaps() {
+    return this.hasMany('App/Models/Roadmap')
+  }
+
+  /**
+   * Gets the activities for this user
+   *
+   * @method activities
+   *
+   * @return {Object}
+   */
+  activities() {
+    return this.hasMany('App/Models/Activity')
+  }
+
+  /**
+   * Gets the clients for this user
+   *
+   * @method clients
+   *
+   * @return {Object}
+   */
+  clients() {
+    return this.hasMany('App/Models/Client')
+  }
+
+  /**
+   * Gets the venues for this user
+   *
+   * @method venues
+   *
+   * @return {Object}
+   */
+  venues() {
+    return this.hasMany('App/Models/Venue')
+  }
+
+  /**
+   * Gets the items for this user
+   *
+   * @method items
+   *
+   * @return {Object}
+   */
+  items() {
+    return this.hasMany('App/Models/Item')
+  }
+
+  /**
+   * Gets the forms for this user
+   *
+   * @method forms
+   *
+   * @return {Object}
+   */
+  forms() {
+    return this.hasMany('App/Models/Form')
+  }
+
+  /**
+   * Gets the rpvfs (RoadmapPointVenueForm) for this user
+   *
+   * @method rpvfs
+   *
+   * @return {Object}
+   */
+  rpvfs() {
+    return this.hasMany('App/Models/RoadmapPointVenueForm')
+  }
+
+  /**
+   * Gets the marks for this user
+   *
+   * @method marks
+   *
+   * @return {Object}
+   */
+  marks() {
+    return this.hasMany('App/Models/Mark')
   }
 }
 
