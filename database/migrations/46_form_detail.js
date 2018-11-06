@@ -2,7 +2,7 @@
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
-const tableName = 'forms'
+const tableName = 'form_details'
 const formTableName = 'forms'
 
 class FormSchema extends Schema {
@@ -10,7 +10,7 @@ class FormSchema extends Schema {
     this.create(tableName, table => {
       table.increments()
       table
-        .uuid('form_id')
+        .integer('form_id')
         .references('id')
         .inTable(formTableName)
       table.text('name').notNullable()

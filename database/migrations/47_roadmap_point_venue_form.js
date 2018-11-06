@@ -24,11 +24,11 @@ class RoadmapPointVenueFormSchema extends Schema {
         .references('id')
         .inTable(venueTableName)
       table
-        .uuid('roadmap_point_id')
+        .integer('roadmap_point_id')
         .references('id')
         .inTable(roadmapPointTableName)
       table
-        .uuid('form_id')
+        .integer('form_id')
         .references('id')
         .inTable(formTableName)
       table.jsonb('metadata')

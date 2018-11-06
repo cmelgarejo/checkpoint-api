@@ -10,7 +10,7 @@ class AssetEventRecordSchema extends Schema {
     this.create(tableName, table => {
       table.increments()
       table
-        .integer('asset_event_id')
+        .uuid('asset_event_id')
         .references('id')
         .inTable(assetEventTableName)
       table.text('message').notNullable()

@@ -29,11 +29,11 @@ class MarkSchema extends Schema {
         .references('id')
         .inTable(venueTableName)
       table
-        .uuid('form_id')
+        .integer('form_id')
         .references('id')
         .inTable(formTableName)
       table
-        .uuid('client_contact_id')
+        .integer('client_contact_id')
         .references('id')
         .inTable(clientContactTableName)
       table.float('lat')

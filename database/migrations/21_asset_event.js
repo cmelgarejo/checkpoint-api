@@ -14,7 +14,7 @@ class AssetEventSchema extends Schema {
         .unique()
         .defaultTo(this.db.raw('public.gen_random_uuid()'))
       table
-        .integer('asset_id')
+        .uuid('asset_id')
         .references('id')
         .inTable(assetTableName)
       table
@@ -24,7 +24,7 @@ class AssetEventSchema extends Schema {
       table.text('name').notNullable()
       table.text('description')
       table.boolean('active').defaultTo(true)
-      table.timestamp('activated_at').defaultTo(knex.fn.now())
+      table.timestamp('activated_at').defaultTo(this.fn.now())
       table.timestamp('deactivated_at')
       table.jsonb('images')
       table.jsonb('metadata')

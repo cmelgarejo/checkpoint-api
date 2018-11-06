@@ -15,7 +15,7 @@ class AssetTypeSchema extends Schema {
       table.text('description').notNullable()
       table.boolean('vehicle').defaultTo(true)
       table.boolean('active').defaultTo(true)
-      table.timestamp('activated_at').defaultTo(knex.fn.now())
+      table.timestamp('activated_at').defaultTo(this.fn.now())
       table.timestamp('deactivated_at')
       table.jsonb('images')
       table.jsonb('metadata')

@@ -36,6 +36,8 @@ class UserController {
   async update({ request, params }) {
     const { id } = params
     const user = await User.findOrFail(id)
+    const allowedParams = User.clearParams(params)
+    console.log(allowedParams)
     user.merge({
       ...request.post()
     })

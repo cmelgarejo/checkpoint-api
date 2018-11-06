@@ -23,7 +23,7 @@ class VenueSchema extends Schema {
         .references('id')
         .inTable(clientTableName)
       table
-        .uuid('client_contact_id')
+        .integer('client_contact_id')
         .references('id')
         .inTable(clientContactTableName)
       table.text('name').notNullable()
@@ -35,7 +35,7 @@ class VenueSchema extends Schema {
       table.jsonb('images')
       table.jsonb('metadata')
       table.boolean('active').defaultTo(true)
-      table.timestamp('activated_at').defaultTo(knex.fn.now())
+      table.timestamp('activated_at').defaultTo(this.fn.now())
       table.timestamp('deactivated_at')
       table.timestamps()
     })

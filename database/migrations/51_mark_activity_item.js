@@ -5,21 +5,22 @@ const Schema = use('Schema')
 const tableName = 'mark_activity_items'
 const markActivityTableName = 'mark_activities'
 const measureUnitTableName = 'measure_units'
+const itemTableName = 'items'
 
 class MarkActivityItemSchema extends Schema {
   up() {
     this.create(tableName, table => {
       table.increments()
       table
-        .uuid('mark_activity_id')
+        .integer('mark_activity_id')
         .references('id')
         .inTable(markActivityTableName)
       table
-        .uuid('measure_unit_id')
+        .integer('measure_unit_id')
         .references('id')
         .inTable(measureUnitTableName)
       table
-        .uuid('item_id')
+        .integer('item_id')
         .references('id')
         .inTable(itemTableName)
       table.text('notes')

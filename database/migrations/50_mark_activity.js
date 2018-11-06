@@ -19,7 +19,7 @@ class MarkActivitySchema extends Schema {
         .references('id')
         .inTable(markTableName)
       table
-        .uuid('activity_id')
+        .integer('activity_id')
         .references('id')
         .inTable(activityTableName)
       table.text('notes')

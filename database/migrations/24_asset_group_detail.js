@@ -10,7 +10,7 @@ class AssetGroupDetailSchema extends Schema {
     this.create(tableName, table => {
       table.increments()
       table
-        .integer('asset_id')
+        .uuid('asset_id')
         .references('id')
         .inTable(assetGroupTableName)
       table

@@ -30,4 +30,4 @@ class ClientContactSchema extends Schema {
   }
 }
 
-module.exports = ClientSchema
+module.exports = ClientContactSchema

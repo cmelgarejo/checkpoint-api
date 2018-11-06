@@ -16,11 +16,11 @@ class RoadmapPointVenueFormDetailSchema extends Schema {
         .references('id')
         .inTable(rpvfTableName)
       table
-        .uuid('activity_id')
+        .integer('activity_id')
         .references('id')
         .inTable(activityTableName)
       table
-        .uuid('item_id')
+        .integer('item_id')
         .references('id')
         .inTable(itemTableName)
       table.float('qty')

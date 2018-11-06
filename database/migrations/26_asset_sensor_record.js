@@ -9,7 +9,7 @@ class AssetSensorRecordSchema extends Schema {
   up() {
     this.create(tableName, table => {
       table
-        .integer('asset_sensor_id')
+        .uuid('asset_sensor_id')
         .references('id')
         .inTable(assetSensorTableName)
       table.text('value')

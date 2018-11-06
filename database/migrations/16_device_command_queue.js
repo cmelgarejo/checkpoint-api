@@ -10,7 +10,7 @@ class DeviceCommandQueueSchema extends Schema {
     this.create(tableName, table => {
       table.increments()
       table
-        .integer('device_id')
+        .uuid('device_id')
         .references('id')
         .inTable(deviceTableName)
       table.text('command')
