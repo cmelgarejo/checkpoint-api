@@ -36,12 +36,15 @@ class UserController {
   async update({ request, params }) {
     const { id } = params
     const user = await User.findOrFail(id)
-    const allowedParams = User.clearParams(params)
-    console.log(allowedParams)
+    const allowedParams = User.cleanParams(request.post())
     user.merge({
-      ...request.post()
+      ...request.post(),
     })
-    if (!(await user.save())) throw new Error('Could not be saved')
+    const result = await user.save()
+    if (!(result)) {
+      console.error(result)
+      throw new Error('Could not be saved')
+    }
     return user
   }
 

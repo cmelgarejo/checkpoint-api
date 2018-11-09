@@ -1,16 +1,13 @@
 'use strict'
 
-class ClearParam {
+class CleanParams {
   async register(Model, customOptions = {}) {
     try {
-      console.log('about to run....')
       let validColumns = await Model.query()
-        .columnInfo()
-        .fetch()
-      console.log(validColumns)
+        .db.table(Model.table)
+        .columnInfo(Model.table)
       validColumns = Object.keys(validColumns)
-
-      Model.clearParams = function(params) {
+      Model.cleanParams = function(params) {
         for (let key in params) {
           if (!~validColumns.indexOf(key)) delete params[key]
         }
@@ -23,4 +20,4 @@ class ClearParam {
   }
 }
 
-module.exports = ClearParam
+module.exports = CleanParams

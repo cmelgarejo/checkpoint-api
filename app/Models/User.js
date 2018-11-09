@@ -25,7 +25,7 @@ class User extends Model {
     return [
       '@provider:Adonis/Acl/HasRole',
       '@provider:Adonis/Acl/HasPermission',
-      'ClearParam'
+      'CleanParams'
     ]
   }
 

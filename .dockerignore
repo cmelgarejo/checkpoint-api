@@ -4,8 +4,9 @@ node_modules/
 # Adonis directory for storing tmp files
 tmp
 
-# Environment variables, never commit this file
-#.env
+
+# Environment variables, never commit these files
+# .env
 .env.example
 
 # The development sqlite file
