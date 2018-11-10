@@ -8,9 +8,6 @@ COPY /. .
 
 RUN npm i
 
-# RUN node ace
+RUN npm i -g nodemon
 
-# RUN node ace seed
-# CMD [ "node", "ace", "migration:run"]
-# CMD [ "node", "ace", "seed"]
-ENTRYPOINT [ "npm", "start" ]
+CMD [ "./scripts/run-dev.sh" ]
