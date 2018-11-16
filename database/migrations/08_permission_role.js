@@ -18,7 +18,8 @@ class PermissionRoleTableSchema extends Schema {
         .references('id')
         .inTable('roles')
         .onDelete('cascade')
-      table.timestamps()
+        // BUG: Has to specify (true, true) to timestamps maybe a bug in adonis-acl?
+      table.timestamps(true, true)
     })
   }
 

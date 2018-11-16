@@ -16,12 +16,11 @@ const Factory = use('Factory')
 /** @type {import('@adonisjs/framework/src/Hash')} */
 const Hash = use('Hash')
 
-Factory.blueprint('App/Models/User', async faker => {
+Factory.blueprint('App/Models/User', async (faker, i, data) => {
   const username = faker.username()
   return {
-    username: username,
-    password: username,
-    email: faker.email()
+    username: data.username || username,
+    password: data.password || username,
+    email: data.email || faker.email(),
   }
 })
-

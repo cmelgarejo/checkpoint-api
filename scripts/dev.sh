@@ -3,6 +3,6 @@
 docker-compose stop dev
 docker-compose build dev
 if [ "$1" = "seed" ]; then
-  docker-compose run dev ./scripts/migrate.sh $1
+  docker-compose run dev ./scripts/migration.sh $1
 fi
 docker-compose up dev

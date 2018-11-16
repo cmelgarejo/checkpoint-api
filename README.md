@@ -18,11 +18,16 @@ npm i
 
 or manually clone the repo and then run `npm install`.
 
-
 ### Migrations
 
 Run the following command to run startup migrations.
 
-```js
-adonis migration:run
+```bash
+./scripts/migration.sh
+```
+
+Optionally run migrations with database seed adding `seed` as parameter to the migration script
+
+```bash
+./scripts/migration.sh seed
 ```
