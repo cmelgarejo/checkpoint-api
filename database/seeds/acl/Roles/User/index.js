@@ -20,5 +20,5 @@ module.exports = async (permissions = undefined) => {
     console.info(`Created role: [${role.name}]`)
     if (permissions) await role.permissions().attach([...permissions['venues']])
   }
-  return { [role.slug]: role }
+  return { [role.slug]: role.id }
 }

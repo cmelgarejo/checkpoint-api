@@ -21,12 +21,9 @@ class AuthSeeder {
     const firstUser = await User.create({
       username: process.env.APP_ADMIN_USERNAME,
       password: process.env.APP_ADMIN_PASSWORD,
-      email: process.env.APP_ADMIN_EMAIL,
+      email: process.env.APP_ADMIN_EMAIL
     })
-    await firstUser.roles().attach([
-      // ...roles['administrator'].map(r => r.id),
-      // ...roles['user'].map(r => r.id),
-    ])
+    await firstUser.roles().attach(Object.values(roles))
   }
 }
 

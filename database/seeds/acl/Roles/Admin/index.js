@@ -18,10 +18,7 @@ module.exports = async (permissions = undefined) => {
   role.description = 'Manage administration privileges'
   if (await role.save()) {
     console.info(`Created role: [${role.name}]`)
-    if (permissions)
-      await role
-        .permissions()
-        .attach([...permissions['users']])
+    if (permissions) await role.permissions().attach([...permissions['users']])
   }
-  return { [role.slug]: role }
+  return { [role.slug]: role.id }
 }
