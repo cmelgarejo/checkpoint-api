@@ -2,17 +2,17 @@
 
 /*
 |--------------------------------------------------------------------------
-| AuthSeeder
+| CheckpointSeeder
 |--------------------------------------------------------------------------
 |
-| Setups all the needed data to have a functioning ACL and auth information
+| Setups all the needed data to have a functioning Checkpoint system
 |
 */
 const User = use('App/Models/User')
 const createAclPermissions = use('./acl/Permissions')
 const createAclRoles = use('./acl/Roles')
 
-class AuthSeeder {
+class CheckpointSeeder {
   async run () {
     console.info('>>> Creating Roles and Permissions')
     const permissions = await createAclPermissions()
@@ -27,4 +27,4 @@ class AuthSeeder {
   }
 }
 
-module.exports = AuthSeeder
+module.exports = CheckpointSeeder
