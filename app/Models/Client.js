@@ -11,7 +11,7 @@ class Client extends Model {
    *
    * @return {Object}
    */
-  contacts() {
+  contacts () {
     return this.hasMany('App/Models/ClientContact')
   }
 }

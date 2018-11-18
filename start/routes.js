@@ -37,4 +37,17 @@ Route.group(() => {
 })
   .prefix('/v1')
   .namespace('/v1')
-  .middleware(['auth:jwt,api', 'tokenMetrics', 'jsonApi'])
+  .middleware(['auth:jwt,api', 'tokenMetrics', 'jsonApi', 'is: administrator'])
+
+Route.group(() => {
+  // Venues
+  Route.resource('venues', 'VenueController').validator('StoreVenue')
+})
+  .prefix('/v1')
+  .namespace('/v1')
+  .middleware([
+    'auth:jwt,api',
+    'tokenMetrics',
+    'jsonApi',
+    'is: (administrator or user)'
+  ])

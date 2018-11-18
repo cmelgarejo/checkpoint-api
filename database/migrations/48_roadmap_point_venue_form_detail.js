@@ -8,7 +8,7 @@ const activityTableName = 'activities'
 const rpvfTableName = 'roadmap_point_venue_forms'
 
 class RoadmapPointVenueFormDetailSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table.increments()
       table
@@ -30,7 +30,7 @@ class RoadmapPointVenueFormDetailSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

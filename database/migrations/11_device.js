@@ -7,7 +7,7 @@ const userTableName = 'users'
 const deviceTypeTableName = 'device_types'
 
 class DeviceSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table
         .uuid('id')
@@ -33,7 +33,7 @@ class DeviceSchema extends Schema {
     })
   }
 
-  async down() {
+  async down () {
     await this.db.raw(`DROP TABLE IF EXISTS ${tableName} CASCADE;`)
   }
 }

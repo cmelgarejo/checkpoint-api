@@ -7,7 +7,7 @@ const assetTableName = 'assets'
 const driverTableName = 'drivers'
 
 class AssetDriverSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table.increments()
       table
@@ -22,7 +22,7 @@ class AssetDriverSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

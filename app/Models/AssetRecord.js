@@ -11,7 +11,7 @@ class AssetRecord extends Model {
    *
    * @return {Object}
    */
-  asset() {
+  asset () {
     return this.belongsTo('App/Models/Asset')
   }
 
@@ -22,7 +22,7 @@ class AssetRecord extends Model {
    *
    * @return {Object}
    */
-  device() {
+  device () {
     return this.belongsTo('App/Models/Device')
   }
 }

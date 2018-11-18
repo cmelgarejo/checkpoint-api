@@ -6,7 +6,7 @@ const tableName = 'form_details'
 const formTableName = 'forms'
 
 class FormSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table.increments()
       table
@@ -22,7 +22,7 @@ class FormSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

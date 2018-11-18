@@ -18,10 +18,11 @@ class UserController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async index({ request, params }) {
-    //if has permissions, show all users
-    return await JsonApiRB.model(User)
-      .request(request.get()) //handle request
+  async index ({ request, params }) {
+    // if has permissions, show all users
+    const res = await JsonApiRB.model(User)
+    return res
+      .request(request.get()) // handle request
       .paginateOrFetch()
   }
 
@@ -33,15 +34,15 @@ class UserController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update({ request, params }) {
+  async update ({ request, params }) {
     const { id } = params
     const user = await User.findOrFail(id)
-    const allowedParams = User.cleanParams(request.post())
+    // const allowedParams = User.cleanParams(request.post())
     user.merge({
-      ...request.post(),
+      ...request.post()
     })
     const result = await user.save()
-    if (!(result)) {
+    if (!result) {
       console.error(result)
       throw new Error('Could not be saved')
     }
@@ -56,7 +57,7 @@ class UserController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async show({ params }) {
+  async show ({ params }) {
     const { id } = params
     const user = await User.findOrFail(id)
     return user
@@ -70,7 +71,7 @@ class UserController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy({ params }) {
+  async destroy ({ params }) {
     const { id } = params
     const user = await User.findOrFail(id)
     user.delete()
@@ -83,7 +84,7 @@ class UserController {
    * @param {object} ctx
    * @param {Response} ctx.response
    */
-  async generateAPIKey({ response, auth }) {
+  async generateAPIKey ({ response, auth }) {
     const user = await auth.getUser()
     const authAPI = await auth.authenticator('api')
     await authAPI.revokeTokensForUser(user)
@@ -99,7 +100,7 @@ class UserController {
    * @param {object} ctx
    * @param {Response} ctx.response
    */
-  async generateJWTKey({ response, auth }) {
+  async generateJWTKey ({ response, auth }) {
     const user = await auth.getUser()
     const authAPI = await auth.authenticator('jwt')
     const token = await authAPI.generate(user)
@@ -114,7 +115,7 @@ class UserController {
    * @param {object} ctx
    * @param {Response} ctx.response
    */
-  async refreshJWTKey({ response, auth }) {
+  async refreshJWTKey ({ response, auth }) {
     const user = await auth.getUser()
     const authAPI = await auth.authenticator('jwt')
     const token = await authAPI.generate(user)

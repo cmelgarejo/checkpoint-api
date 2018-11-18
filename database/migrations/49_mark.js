@@ -10,7 +10,7 @@ const formTableName = 'forms'
 const clientContactTableName = 'client_contacts'
 
 class MarkSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table
         .uuid('id')
@@ -53,7 +53,7 @@ class MarkSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

@@ -6,7 +6,7 @@ const tableName = 'asset_sensors'
 const assetTableName = 'assets'
 
 class AssetSensorSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table
         .uuid('id')
@@ -27,7 +27,7 @@ class AssetSensorSchema extends Schema {
     })
   }
 
-  async down() {
+  async down () {
     // await this.db.raw(`DROP TABLE IF EXISTS ${tableName} CASCADE;`) // this.drop(tableName)
     await this.db.raw(`DROP TABLE IF EXISTS ${tableName} CASCADE;`)
   }

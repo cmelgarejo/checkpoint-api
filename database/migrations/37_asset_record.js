@@ -7,7 +7,7 @@ const assetTableName = 'assets'
 const deviceTableName = 'devices'
 
 class AssetRecordSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table.increments()
       table
@@ -36,7 +36,7 @@ class AssetRecordSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

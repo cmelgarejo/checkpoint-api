@@ -11,7 +11,7 @@ class AssetGroup extends Model {
    *
    * @return {Object}
    */
-  assets() {
+  assets () {
     return this.manyThrough('App/Models/AssetGroupDetail', 'assets')
   }
 }

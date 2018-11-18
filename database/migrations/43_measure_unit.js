@@ -5,7 +5,7 @@ const Schema = use('Schema')
 const tableName = 'measure_units'
 
 class MeasureUnitSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table.increments()
       table.text('description').notNullable()
@@ -15,7 +15,7 @@ class MeasureUnitSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

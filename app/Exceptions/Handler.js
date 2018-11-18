@@ -3,9 +3,9 @@ const Logger = use('Logger')
 const BaseExceptionHandler = use('BaseExceptionHandler')
 
 const JsonApi = use('JsonApi')
-const {
-  JsonApiException
-} = require('@dinevillar/adonis-json-api-serializer/src/Exceptions')
+// const {
+//   JsonApiException
+// } = require('@dinevillar/adonis-json-api-serializer/src/Exceptions')
 
 /**
  * This class handles all exceptions thrown during
@@ -25,7 +25,7 @@ class ExceptionHandler extends BaseExceptionHandler {
    *
    * @return {void}
    */
-  async handle(error, options) {
+  async handle (error, options) {
     // const { request, response } = options
     // switch (error.name) {
     //   case 'error':
@@ -54,7 +54,7 @@ class ExceptionHandler extends BaseExceptionHandler {
    *
    * @return {void}
    */
-  async report(error, { request }) {
+  async report (error, { request }) {
     Logger.error(
       error.message,
       'Request: ',

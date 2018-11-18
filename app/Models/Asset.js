@@ -11,7 +11,7 @@ class Asset extends Model {
    *
    * @return {Object}
    */
-  assetType() {
+  assetType () {
     return this.hasOne('App/Models/AssetType')
   }
 
@@ -22,7 +22,7 @@ class Asset extends Model {
    *
    * @return {Object}
    */
-  devices() {
+  devices () {
     return this.manyThrough('App/Models/AssetDevice', 'devices')
   }
 
@@ -33,7 +33,7 @@ class Asset extends Model {
    *
    * @return {Object}
    */
-  drivers() {
+  drivers () {
     return this.manyThrough('App/Models/AssetDriver', 'drivers')
   }
 
@@ -44,7 +44,7 @@ class Asset extends Model {
    *
    * @return {Object}
    */
-  events() {
+  events () {
     return this.hasMany('App/Models/AssetEvent')
   }
 
@@ -55,7 +55,7 @@ class Asset extends Model {
    *
    * @return {Object}
    */
-  sensors() {
+  sensors () {
     return this.hasMany('App/Models/AssetSensor')
   }
 
@@ -66,7 +66,7 @@ class Asset extends Model {
    *
    * @return {Object}
    */
-  geofences() {
+  geofences () {
     return this.manyThrough('App/Models/AssetGeofence', 'geofences')
   }
 
@@ -77,7 +77,7 @@ class Asset extends Model {
    *
    * @return {Object}
    */
-  pois() {
+  pois () {
     return this.manyThrough('App/Models/AssetPoi', 'pois')
   }
 
@@ -88,7 +88,7 @@ class Asset extends Model {
    *
    * @return {Object}
    */
-  positions() {
+  positions () {
     return this.hasMany('App/Models/AssetPosition')
   }
 
@@ -99,7 +99,7 @@ class Asset extends Model {
    *
    * @return {Object}
    */
-  records() {
+  records () {
     return this.hasMany('App/Models/AssetRecord')
   }
 
@@ -110,7 +110,7 @@ class Asset extends Model {
    *
    * @return {Object}
    */
-  roadmaps() {
+  roadmaps () {
     return this.manyThrough('App/Models/AssetRoadmap', 'roadmaps')
   }
 }

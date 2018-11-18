@@ -4,7 +4,7 @@
 const Schema = use('Schema')
 const tableName = 'users'
 class UserSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table
         .uuid('id')
@@ -29,7 +29,7 @@ class UserSchema extends Schema {
     })
   }
 
-  async down() {
+  async down () {
     await this.db.raw(`DROP TABLE IF EXISTS ${tableName} CASCADE;`)
   }
 }

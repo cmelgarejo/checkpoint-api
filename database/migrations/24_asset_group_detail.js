@@ -6,7 +6,7 @@ const tableName = 'asset_group_details'
 const assetGroupTableName = 'asset_groups'
 
 class AssetGroupDetailSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table.increments()
       table
@@ -24,7 +24,7 @@ class AssetGroupDetailSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

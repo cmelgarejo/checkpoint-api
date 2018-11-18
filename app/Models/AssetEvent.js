@@ -11,7 +11,7 @@ class AssetEvent extends Model {
    *
    * @return {Object}
    */
-  records() {
+  records () {
     return this.hasMany('App/Models/AssetEventRecord')
   }
 }

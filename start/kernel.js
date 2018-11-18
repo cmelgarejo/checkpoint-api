@@ -36,7 +36,7 @@ const namedMiddleware = {
   tokenMetrics: 'App/Middleware/TokenMetrics',
   is: 'Adonis/Acl/Is',
   can: 'Adonis/Acl/Can',
-  jsonApi: 'JsonApi/Middleware/Specification',
+  jsonApi: 'JsonApi/Middleware/Specification'
 }
 
 /*

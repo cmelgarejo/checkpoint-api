@@ -6,7 +6,7 @@ const tableName = 'device_type_datastrings'
 const deviceTypeTableName = 'device_types'
 
 class DeviceTypeDatastringSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table.increments()
       table
@@ -20,7 +20,7 @@ class DeviceTypeDatastringSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

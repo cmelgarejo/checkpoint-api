@@ -11,7 +11,7 @@ class AssetDevice extends Model {
    *
    * @return {Object}
    */
-  assets() {
+  assets () {
     return this.hasMany('App/Models/Asset')
   }
 
@@ -22,7 +22,7 @@ class AssetDevice extends Model {
    *
    * @return {Object}
    */
-  devices() {
+  devices () {
     return this.hasMany('App/Models/Device')
   }
 }

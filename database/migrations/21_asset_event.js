@@ -7,7 +7,7 @@ const assetTableName = 'assets'
 const deviceTypeEventsTableName = 'device_type_events'
 
 class AssetEventSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table
         .uuid('id')
@@ -32,7 +32,7 @@ class AssetEventSchema extends Schema {
     })
   }
 
-  async down() {
+  async down () {
     // await this.db.raw(`DROP TABLE IF EXISTS ${tableName} CASCADE;`) // this.drop(tableName)
     await this.db.raw(`DROP TABLE IF EXISTS ${tableName} CASCADE;`)
   }

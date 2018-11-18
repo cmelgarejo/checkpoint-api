@@ -13,7 +13,7 @@ const createAclPermissions = use('./acl/Permissions')
 const createAclRoles = use('./acl/Roles')
 
 class AuthSeeder {
-  async run() {
+  async run () {
     console.info('>>> Creating Roles and Permissions')
     const permissions = await createAclPermissions()
     const roles = await createAclRoles(permissions)

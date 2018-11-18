@@ -7,7 +7,7 @@ const assetTableName = 'assets'
 const poiTableName = 'pois'
 
 class AssetPoiSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table.increments()
       table
@@ -22,7 +22,7 @@ class AssetPoiSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

@@ -6,7 +6,7 @@ const tableName = 'clients'
 const userTableName = 'users'
 
 class ClientSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table
         .uuid('id')
@@ -24,7 +24,7 @@ class ClientSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

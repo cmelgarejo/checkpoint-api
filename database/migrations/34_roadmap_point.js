@@ -6,7 +6,7 @@ const tableName = 'roadmap_points'
 const roadmapTableName = 'roadmaps'
 
 class RoadmapPointSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table.increments()
       table
@@ -40,7 +40,7 @@ class RoadmapPointSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

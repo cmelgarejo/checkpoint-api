@@ -12,7 +12,7 @@
 const Factory = use('Factory')
 
 class UserSeeder {
-  async run() {
+  async run () {
     console.info('>>> Creating user')
     await Factory.model('App/Models/User').create()
   }

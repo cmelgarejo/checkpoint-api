@@ -7,7 +7,7 @@ const deviceTableName = 'devices'
 const userTableName = 'users'
 
 class SimcardSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table
         .uuid('id')
@@ -39,7 +39,7 @@ class SimcardSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

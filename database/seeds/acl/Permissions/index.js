@@ -16,6 +16,6 @@ module.exports = async () => {
   console.info(`>> Creating permissions`)
   return {
     users: await userPermissions(),
-    venues: await venuePermissions(),
+    venues: await venuePermissions()
   }
 }

@@ -6,7 +6,7 @@ const tableName = 'client_contacts'
 const clientTableName = 'clients'
 
 class ClientContactSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table.increments()
       table
@@ -25,7 +25,7 @@ class ClientContactSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

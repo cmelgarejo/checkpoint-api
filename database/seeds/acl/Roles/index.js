@@ -18,6 +18,6 @@ module.exports = async (permissions = undefined) => {
   const userRole = await User(permissions)
   return {
     ...adminRole,
-    ...userRole,
+    ...userRole
   }
 }

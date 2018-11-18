@@ -11,7 +11,7 @@ class Driver extends Model {
    *
    * @return {Object}
    */
-  assets() {
+  assets () {
     return this.manyThrough('App/Models/AssetDriver', 'assets')
   }
 }

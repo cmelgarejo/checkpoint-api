@@ -6,7 +6,7 @@ const tableName = 'activities'
 const userTableName = 'users'
 
 class ActivitySchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table.increments()
       table
@@ -21,7 +21,7 @@ class ActivitySchema extends Schema {
     })
   }
 
-  async down() {
+  async down () {
     this.drop(tableName)
   }
 }

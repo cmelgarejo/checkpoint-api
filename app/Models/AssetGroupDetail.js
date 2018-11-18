@@ -11,7 +11,7 @@ class AssetGroupDetail extends Model {
    *
    * @return {Object}
    */
-  assets() {
+  assets () {
     return this.hasMany('App/Models/Asset')
   }
 }

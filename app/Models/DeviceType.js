@@ -11,7 +11,7 @@ class DeviceType extends Model {
    *
    * @return {Object}
    */
-  dataStrings() {
+  dataStrings () {
     return this.hasMany('App/Models/DeviceTypeDatastring')
   }
 
@@ -22,7 +22,7 @@ class DeviceType extends Model {
    *
    * @return {Object}
    */
-  commands() {
+  commands () {
     return this.hasMany('App/Models/DeviceTypeCommand')
   }
 
@@ -33,7 +33,7 @@ class DeviceType extends Model {
    *
    * @return {Object}
    */
-  events() {
+  events () {
     return this.hasMany('App/Models/DeviceTypeEvent')
   }
 
@@ -44,7 +44,7 @@ class DeviceType extends Model {
    *
    * @return {Object}
    */
-  sensors() {
+  sensors () {
     return this.hasMany('App/Models/DeviceTypeSensor')
   }
 }

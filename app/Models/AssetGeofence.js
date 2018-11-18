@@ -11,7 +11,7 @@ class AssetGeofence extends Model {
    *
    * @return {Object}
    */
-  assets() {
+  assets () {
     return this.hasMany('App/Models/Asset')
   }
 
@@ -22,7 +22,7 @@ class AssetGeofence extends Model {
    *
    * @return {Object}
    */
-  geofences() {
+  geofences () {
     return this.hasMany('App/Models/Geofence')
   }
 }

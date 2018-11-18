@@ -7,7 +7,7 @@ const Model = use('Model')
 const Hash = use('Hash')
 
 class User extends Model {
-  static boot() {
+  static boot () {
     super.boot()
 
     /**
@@ -21,7 +21,7 @@ class User extends Model {
     })
   }
 
-  static get traits() {
+  static get traits () {
     return [
       '@provider:Adonis/Acl/HasRole',
       '@provider:Adonis/Acl/HasPermission',
@@ -29,11 +29,11 @@ class User extends Model {
     ]
   }
 
-  static get hidden() {
+  static get hidden () {
     return ['password']
   }
 
-  static get Serializer() {
+  static get Serializer () {
     return 'JsonApi/Serializer/LucidSerializer' // Override Lucid/VanillaSerializer
   }
 
@@ -47,7 +47,7 @@ class User extends Model {
    *
    * @return {Object}
    */
-  tokens() {
+  tokens () {
     return this.hasMany('App/Models/Token')
   }
 
@@ -58,7 +58,7 @@ class User extends Model {
    *
    * @return {Object}
    */
-  activeToken() {
+  activeToken () {
     return this.hasOne('App/Models/Token').where('is_revoked', false)
   }
 
@@ -69,7 +69,7 @@ class User extends Model {
    *
    * @return {Object}
    */
-  simcards() {
+  simcards () {
     return this.hasMany('App/Models/Simcard')
   }
 
@@ -80,7 +80,7 @@ class User extends Model {
    *
    * @return {Object}
    */
-  devices() {
+  devices () {
     return this.hasMany('App/Models/Device')
   }
 
@@ -91,7 +91,7 @@ class User extends Model {
    *
    * @return {Object}
    */
-  assets() {
+  assets () {
     return this.manyThrough('App/Models/AssetGroup', 'assets')
   }
 
@@ -102,7 +102,7 @@ class User extends Model {
    *
    * @return {Object}
    */
-  assetGroups() {
+  assetGroups () {
     return this.hasMany('App/Models/AssetGroup')
   }
 
@@ -113,7 +113,7 @@ class User extends Model {
    *
    * @return {Object}
    */
-  geofences() {
+  geofences () {
     return this.hasMany('App/Models/Geofence')
   }
 
@@ -124,7 +124,7 @@ class User extends Model {
    *
    * @return {Object}
    */
-  pois() {
+  pois () {
     return this.hasMany('App/Models/Poi')
   }
 
@@ -135,7 +135,7 @@ class User extends Model {
    *
    * @return {Object}
    */
-  roadmaps() {
+  roadmaps () {
     return this.hasMany('App/Models/Roadmap')
   }
 
@@ -146,7 +146,7 @@ class User extends Model {
    *
    * @return {Object}
    */
-  activities() {
+  activities () {
     return this.hasMany('App/Models/Activity')
   }
 
@@ -157,7 +157,7 @@ class User extends Model {
    *
    * @return {Object}
    */
-  clients() {
+  clients () {
     return this.hasMany('App/Models/Client')
   }
 
@@ -168,7 +168,7 @@ class User extends Model {
    *
    * @return {Object}
    */
-  venues() {
+  venues () {
     return this.hasMany('App/Models/Venue')
   }
 
@@ -179,7 +179,7 @@ class User extends Model {
    *
    * @return {Object}
    */
-  items() {
+  items () {
     return this.hasMany('App/Models/Item')
   }
 
@@ -190,7 +190,7 @@ class User extends Model {
    *
    * @return {Object}
    */
-  forms() {
+  forms () {
     return this.hasMany('App/Models/Form')
   }
 
@@ -201,7 +201,7 @@ class User extends Model {
    *
    * @return {Object}
    */
-  rpvfs() {
+  rpvfs () {
     return this.hasMany('App/Models/RoadmapPointVenueForm')
   }
 
@@ -212,7 +212,7 @@ class User extends Model {
    *
    * @return {Object}
    */
-  marks() {
+  marks () {
     return this.hasMany('App/Models/Mark')
   }
 }

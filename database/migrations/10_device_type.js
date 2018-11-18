@@ -5,7 +5,7 @@ const Schema = use('Schema')
 const tableName = 'device_types'
 
 class DeviceTypeSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table.increments()
       table.text('name').notNullable()
@@ -17,7 +17,7 @@ class DeviceTypeSchema extends Schema {
     })
   }
 
-  async down() {
+  async down () {
     await this.db.raw(`DROP TABLE IF EXISTS ${tableName} CASCADE;`) // this.drop(tableName)
   }
 }

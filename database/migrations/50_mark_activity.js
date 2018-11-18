@@ -5,13 +5,9 @@ const Schema = use('Schema')
 const tableName = 'mark_activities'
 const markTableName = 'marks'
 const activityTableName = 'activities'
-const userTableName = 'users'
-const venueTableName = 'venues'
-const formTableName = 'forms'
-const clientContactTableName = 'client_contacts'
 
 class MarkActivitySchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table.increments()
       table
@@ -38,7 +34,7 @@ class MarkActivitySchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

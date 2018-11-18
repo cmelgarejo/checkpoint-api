@@ -8,7 +8,7 @@ const measureUnitTableName = 'measure_units'
 const itemTableName = 'items'
 
 class MarkActivityItemSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table.increments()
       table
@@ -29,7 +29,7 @@ class MarkActivityItemSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

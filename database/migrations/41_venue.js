@@ -8,7 +8,7 @@ const clientTableName = 'clients'
 const clientContactTableName = 'client_contacts'
 
 class VenueSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table
         .uuid('id')
@@ -22,10 +22,12 @@ class VenueSchema extends Schema {
         .uuid('client_id')
         .references('id')
         .inTable(clientTableName)
+        .nullable()
       table
         .integer('client_contact_id')
         .references('id')
         .inTable(clientContactTableName)
+        .nullable()
       table.text('name').notNullable()
       table.text('description')
       table.text('address')
@@ -41,7 +43,7 @@ class VenueSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

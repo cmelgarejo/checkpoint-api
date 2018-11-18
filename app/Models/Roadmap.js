@@ -11,7 +11,7 @@ class Roadmap extends Model {
    *
    * @return {Object}
    */
-  points() {
+  points () {
     return this.hasMany('App/Models/RoadmapPoint')
   }
 }

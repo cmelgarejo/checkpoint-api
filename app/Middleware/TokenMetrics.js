@@ -1,17 +1,17 @@
 'use strict'
-const TokenMetric = use('App/Models/TokenMetric')
+// const TokenMetric = use('App/Models/TokenMetric')
 
 class TokenMetrics {
-  async handle({ request, auth }, next) {
+  async handle ({ request, auth }, next) {
     await this.handleTokenMetrics(request, auth)
     await next()
   }
 
-  async wsHandle({ request, auth }, next) {
-    await handleTokenMetrics(request, auth)
+  async wsHandle ({ request, auth }, next) {
+    await this.handleTokenMetrics(request, auth)
     await next()
   }
-  async handleTokenMetrics(request, auth) {
+  async handleTokenMetrics (request, auth) {
     try {
       // console.log(auth.user)
       // const authAPI = await auth.authenticator('api')

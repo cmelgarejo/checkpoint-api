@@ -11,11 +11,11 @@ class Token extends Model {
    *
    * @return {Object}
    */
-  tokenMetrics() {
+  tokenMetrics () {
     return this.hasMany('App/Models/TokenMetric')
   }
 
-  static get Serializer() {
+  static get Serializer () {
     return 'JsonApi/Serializer/LucidSerializer'
   }
 }

@@ -6,7 +6,7 @@ const tableName = 'token_metrics'
 const tokensTablename = 'tokens'
 
 class TokensSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table.increments()
       table
@@ -19,7 +19,7 @@ class TokensSchema extends Schema {
     })
   }
 
-  async down() {
+  async down () {
     await this.db.raw(`DROP TABLE IF EXISTS ${tableName} CASCADE;`) // this.drop(tableName)
   }
 }

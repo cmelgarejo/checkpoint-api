@@ -11,7 +11,7 @@ class AssetDriver extends Model {
    *
    * @return {Object}
    */
-  assets() {
+  assets () {
     return this.hasMany('App/Models/Asset')
   }
 
@@ -22,7 +22,7 @@ class AssetDriver extends Model {
    *
    * @return {Object}
    */
-  drivers() {
+  drivers () {
     return this.hasMany('App/Models/Driver')
   }
 }

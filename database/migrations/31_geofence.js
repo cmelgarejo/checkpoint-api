@@ -5,7 +5,7 @@ const Schema = use('Schema')
 const tableName = 'geofences'
 const userTableName = 'users'
 class GeofenceSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table
         .uuid('id')
@@ -21,14 +21,12 @@ class GeofenceSchema extends Schema {
       table
         .text('emails')
         .comment(
-          'Optional: if this is set, it will only send the alert to \
-        these contacts, otherwise will use what is set on AssetGroup',
+          'Optional: if this is set, it will only send the alert to these contacts, otherwise will use what is set on AssetGroup'
         )
       table
         .text('phones')
         .comment(
-          'Optional: if this is set, it will only send the alert to \
-        these contacts, otherwise will use what is set on AssetGroup',
+          'Optional: if this is set, it will only send the alert to these contacts, otherwise will use what is set on AssetGroup'
         )
       table.date('otd').comment('A one time date (it will work just that day)')
       table
@@ -53,7 +51,7 @@ class GeofenceSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

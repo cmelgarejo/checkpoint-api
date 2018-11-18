@@ -10,7 +10,7 @@ class Device extends Model {
    *
    * @return {Object}
    */
-  deviceType() {
+  deviceType () {
     return this.hasOne('App/Models/DeviceType')
   }
 
@@ -21,7 +21,7 @@ class Device extends Model {
    *
    * @return {Object}
    */
-  user() {
+  user () {
     return this.belongsTo('App/Model/User')
   }
 
@@ -32,7 +32,7 @@ class Device extends Model {
    *
    * @return {Object}
    */
-  commandQueue() {
+  commandQueue () {
     return this.hasMany('App/Models/DeviceCommandQueue')
   }
 
@@ -43,7 +43,7 @@ class Device extends Model {
    *
    * @return {Object}
    */
-  simcards() {
+  simcards () {
     return this.hasMany('App/Models/Simcard')
   }
 
@@ -54,7 +54,7 @@ class Device extends Model {
    *
    * @return {Object}
    */
-  assets() {
+  assets () {
     return this.manyThrough('App/Models/AssetDevice', 'assets')
   }
 }

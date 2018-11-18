@@ -5,7 +5,7 @@ const Schema = use('Schema')
 const tableName = 'drivers'
 const userTableName = 'users'
 class DriverSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table
         .uuid('id')
@@ -25,7 +25,7 @@ class DriverSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

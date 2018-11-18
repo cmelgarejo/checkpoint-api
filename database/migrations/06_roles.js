@@ -5,7 +5,7 @@ const Schema = use('Schema')
 const tableName = 'roles'
 
 class RolesTableSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table.increments()
       table
@@ -21,7 +21,7 @@ class RolesTableSchema extends Schema {
     })
   }
 
-  async down() {
+  async down () {
     await this.db.raw(`DROP TABLE IF EXISTS ${tableName} CASCADE;`)
   }
 }

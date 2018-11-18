@@ -9,7 +9,7 @@ const formTableName = 'forms'
 const roadmapPointTableName = 'roadmap_points'
 
 class RoadmapPointVenueFormSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table
         .uuid('id')
@@ -36,7 +36,7 @@ class RoadmapPointVenueFormSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

@@ -11,7 +11,7 @@ class AssetSensor extends Model {
    *
    * @return {Object}
    */
-  records() {
+  records () {
     return this.hasMany('App/Models/AssetSensorRecord')
   }
 }

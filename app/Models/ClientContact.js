@@ -11,7 +11,7 @@ class ClientContact extends Model {
    *
    * @return {Object}
    */
-  client() {
+  client () {
     return this.belongsTo('App/Models/Client')
   }
 }

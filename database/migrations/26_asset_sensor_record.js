@@ -6,7 +6,7 @@ const tableName = 'asset_sensor_records'
 const assetSensorTableName = 'asset_sensors'
 
 class AssetSensorRecordSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table
         .uuid('asset_sensor_id')
@@ -18,7 +18,7 @@ class AssetSensorRecordSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }

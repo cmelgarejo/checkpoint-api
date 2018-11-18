@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "adonis serve --dev",
     "start": "node server.js",
-    "test": "node ace test",
-    "lint": "eslint ."
+    "test": "standard && node ace test",
+    "lint": "standard"
   },
   "keywords": [
     "centralgps",
@@ -29,13 +29,22 @@
     "@adonisjs/ignitor": "^2.0.8",
     "@adonisjs/lucid": "^6.1.3",
     "@adonisjs/validator": "^5.0.6",
+    "@adonisjs/vow": "^1.0.17",
     "@dinevillar/adonis-json-api-serializer": "github:cmelgarejo/adonis-json-api-serializer",
     "adonis-acl": "github:cmelgarejo/adonis-acl",
     "pem": "^1.13.2",
     "pg": "^7.6.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "standard": "*"
+  },
   "autoload": {
     "App": "./app"
+  },
+  "standard": {
+    "globals": [
+      "use",
+      "make"
+    ]
   }
 }

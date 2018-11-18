@@ -5,11 +5,10 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 const tableName = 'asset_groups'
-const assetTableName = 'assets'
 const userTableName = 'users'
 
 class AssetGroupSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table
         .uuid('id')
@@ -34,7 +33,7 @@ class AssetGroupSchema extends Schema {
     })
   }
 
-  async down() {
+  async down () {
     this.drop(tableName)
   }
 }

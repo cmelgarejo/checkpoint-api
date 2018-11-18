@@ -6,7 +6,7 @@ const tableName = 'pois'
 const userTableName = 'users'
 
 class PoiSchema extends Schema {
-  up() {
+  up () {
     this.create(tableName, table => {
       table
         .uuid('id')
@@ -24,14 +24,12 @@ class PoiSchema extends Schema {
       table
         .text('emails')
         .comment(
-          'Optional: if this is set, it will only send the alert to \
-          these contacts, otherwise will use what is set on AssetGroup',
+          'Optional: if this is set, it will only send the alert to these contacts, otherwise will use what is set on AssetGroup'
         )
       table
         .text('phones')
         .comment(
-          'Optional: if this is set, it will only send the alert to \
-          these contacts, otherwise will use what is set on AssetGroup',
+          'Optional: if this is set, it will only send the alert to these contacts, otherwise will use what is set on AssetGroup'
         )
       table.jsonb('metadata')
       table.boolean('shareable').defaultTo(false)
@@ -42,7 +40,7 @@ class PoiSchema extends Schema {
     })
   }
 
-  down() {
+  down () {
     this.drop(tableName)
   }
 }
