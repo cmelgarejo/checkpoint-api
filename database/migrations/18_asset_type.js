@@ -7,10 +7,7 @@ const tableName = 'asset_types'
 class AssetTypeSchema extends Schema {
   up () {
     this.create(tableName, table => {
-      table
-        .uuid('id')
-        .unique()
-        .defaultTo(this.db.raw('public.gen_random_uuid()'))
+      table.increments()
       table.text('name').notNullable()
       table.text('description').notNullable()
       table.boolean('vehicle').defaultTo(true)

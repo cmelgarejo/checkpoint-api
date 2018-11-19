@@ -20,8 +20,8 @@ class RoadmapPointSchema extends Schema {
         .integer('radius')
         .defaultTo(50)
         .comment('The detection radius of the point')
-      table.float('lat')
-      table.float('lon')
+      table.decimal('lat', null)
+      table.decimal('lon', null)
       table
         .integer('point_order')
         .defaultTo(0)

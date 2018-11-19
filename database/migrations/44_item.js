@@ -19,12 +19,13 @@ class ItemSchema extends Schema {
         .comment('Code used by the client to identify item in their system')
       table.text('description')
       table.text('notes')
-      table.float('stock')
-      table.float('min_qty')
-      table.float('max_qty')
+      table.decimal('stock')
+      table.decimal('min_qty')
+      table.decimal('max_qty')
       table.jsonb('images')
       table.jsonb('metadata')
       table.timestamps()
+      table.index('user_id')
     })
   }
 

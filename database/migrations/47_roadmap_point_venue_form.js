@@ -33,6 +33,7 @@ class RoadmapPointVenueFormSchema extends Schema {
         .inTable(formTableName)
       table.jsonb('metadata')
       table.timestamps()
+      table.index('user_id')
     })
   }
 

@@ -17,7 +17,7 @@ Route.get('/', () => ({ up: true }))
 
 /*
 |--------------------------------------------------------------------------
-| v1
+| v2
 |--------------------------------------------------------------------------
 */
 Route.group(() => {
@@ -25,8 +25,8 @@ Route.group(() => {
   Route.post('users/token', 'UserController.generateJWTKey')
   Route.post('users/apikey', 'UserController.generateAPIKey')
 })
-  .prefix('/v1')
-  .namespace('/v1')
+  .prefix('/v2')
+  .namespace('/v2')
   .middleware(['auth:basic'])
 
 Route.group(() => {
@@ -35,19 +35,19 @@ Route.group(() => {
     new Map([[['users.store'], ['User']], [['users.update'], ['User']]])
   )
 })
-  .prefix('/v1')
-  .namespace('/v1')
+  .prefix('/v2')
+  .namespace('/v2')
   .middleware(['auth:jwt,api', 'tokenMetrics', 'jsonApi', 'is: administrator'])
 
 Route.group(() => {
   // Venues
   Route.resource('venues', 'VenueController').validator('StoreVenue')
 })
-  .prefix('/v1')
-  .namespace('/v1')
+  .prefix('/v2')
+  .namespace('/v2')
   .middleware([
     'auth:jwt,api',
     'tokenMetrics',
     'jsonApi',
-    'is: (administrator or user)'
+    'is: user or administrator'
   ])

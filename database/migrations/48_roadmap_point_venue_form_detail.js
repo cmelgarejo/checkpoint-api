@@ -23,7 +23,7 @@ class RoadmapPointVenueFormDetailSchema extends Schema {
         .integer('item_id')
         .references('id')
         .inTable(itemTableName)
-      table.float('qty')
+      table.decimal('qty')
       table.text('notes')
       table.jsonb('metadata')
       table.timestamps()

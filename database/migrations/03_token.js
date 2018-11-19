@@ -21,6 +21,7 @@ class TokensSchema extends Schema {
       table.string('type', 80).notNullable()
       table.boolean('is_revoked').defaultTo(false)
       table.timestamps()
+      table.index('user_id')
     })
   }
 

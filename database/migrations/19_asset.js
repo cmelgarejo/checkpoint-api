@@ -14,7 +14,7 @@ class AssetSchema extends Schema {
         .unique()
         .defaultTo(this.db.raw('public.gen_random_uuid()'))
       table
-        .uuid('asset_type_id')
+        .integer('asset_type_id')
         .references('id')
         .inTable(assetTypeTableName)
       table
@@ -23,13 +23,14 @@ class AssetSchema extends Schema {
         .inTable(userTableName)
       table.text('name').notNullable()
       table.text('description')
-      table.float('mileage')
+      table.decimal('mileage', null).defaultTo(0)
       table.boolean('active').defaultTo(true)
       table.timestamp('activated_at').defaultTo(this.fn.now())
       table.timestamp('deactivated_at')
       table.jsonb('images')
       table.jsonb('metadata')
       table.timestamps()
+      table.index('user_id')
     })
   }
 

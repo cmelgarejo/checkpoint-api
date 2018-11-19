@@ -36,6 +36,7 @@ class SimcardSchema extends Schema {
       table.timestamp('activated_at').defaultTo(this.fn.now())
       table.timestamp('deactivated_at')
       table.timestamps()
+      table.index('user_id')
     })
   }
 

@@ -17,11 +17,24 @@ module.exports = {
       structure: {
         // links: {
         //   self: data => {
-        //     return '/v1/users/' + data.id
+        //     return '/v2/users/' + data.id
         //   }
         // }
         // topLevelLinks: {
-        //   self: '/v1/users'
+        //   self: '/v2/users'
+        // }
+      }
+    },
+    venue: {
+      model: 'App/Models/Venue',
+      structure: {
+        // links: {
+        //   self: data => {
+        //     return '/v2/venue/' + data.id
+        //   }
+        // }
+        // topLevelLinks: {
+        //   self: '/v2/venue'
         // }
       }
     }

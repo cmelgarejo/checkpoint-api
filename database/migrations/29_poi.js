@@ -19,8 +19,8 @@ class PoiSchema extends Schema {
       table.text('name')
       table.text('description')
       table.integer('radius').comment('The detection radius of the POI')
-      table.float('lat')
-      table.float('lon')
+      table.decimal('lat', null)
+      table.decimal('lon', null)
       table
         .text('emails')
         .comment(
@@ -37,6 +37,7 @@ class PoiSchema extends Schema {
       table.timestamp('activated_at').defaultTo(this.fn.now())
       table.timestamp('deactivated_at')
       table.timestamps()
+      table.index('user_id')
     })
   }
 

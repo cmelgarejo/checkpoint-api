@@ -24,7 +24,7 @@ class MarkActivityItemSchema extends Schema {
         .references('id')
         .inTable(itemTableName)
       table.text('notes')
-      table.float('qty')
+      table.decimal('qty')
       table.timestamps()
     })
   }

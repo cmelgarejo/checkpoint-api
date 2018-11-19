@@ -8,7 +8,7 @@
 | Creates a random user with mocked data
 |
 */
-
+/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Factory = use('Factory')
 
 class UserSeeder {
