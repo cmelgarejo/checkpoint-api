@@ -7,7 +7,7 @@
 | routes for different URL's and bind Controller actions to them.
 |
 | A complete guide on routing is available here.
-| http://adonisjs.com/docs/4.0/routing
+| http://adonisjs.com/docs/4.1/routing
 |
 */
 
@@ -20,6 +20,10 @@ Route.get('/', () => ({ up: true }))
 | v2
 |--------------------------------------------------------------------------
 */
+
+/**
+ * User token routes
+ */
 Route.group(() => {
   // Route.post('users/token/refresh', 'UserController.refreshJWTKey')
   Route.post('users/token', 'UserController.generateJWTKey')
@@ -29,6 +33,9 @@ Route.group(() => {
   .namespace('/v2')
   .middleware(['auth:basic'])
 
+/**
+ * Administrative routes
+ */
 Route.group(() => {
   // Users
   Route.resource('users', 'UserController').validator(
@@ -37,8 +44,11 @@ Route.group(() => {
 })
   .prefix('/v2')
   .namespace('/v2')
-  .middleware(['auth:jwt,api', 'tokenMetrics', 'jsonApi', 'is: administrator'])
+  .middleware(['jsonApi', 'auth:jwt,api', 'tokenMetrics', 'is: administrator'])
 
+/**
+ * Common user routes
+ */
 Route.group(() => {
   // Venues
   Route.resource('venues', 'VenueController').validator('StoreVenue')
@@ -46,8 +56,8 @@ Route.group(() => {
   .prefix('/v2')
   .namespace('/v2')
   .middleware([
+    'jsonApi',
     'auth:jwt,api',
     'tokenMetrics',
-    'jsonApi',
-    'is: user or administrator'
+    'is: administrator or user'
   ])

@@ -8,7 +8,7 @@ module.exports = {
   // },
   globalOptions: {
     convertCase: 'snake_case',
-    unconvertCase: 'camelCase'
+    unconvertCase: 'snake_case'
   },
   // Register JSON API Types here.
   registry: {
