@@ -18,6 +18,7 @@ const providers = [
   '@adonisjs/lucid/providers/LucidProvider',
   '@adonisjs/antl/providers/AntlProvider',
   '@adonisjs/validator/providers/ValidatorProvider',
+  '@adonisjs/ally/providers/AllyProvider',
   '@dinevillar/adonis-json-api-serializer/providers/JsonApiProvider',
   'adonis-acl/providers/AclProvider'
 ]

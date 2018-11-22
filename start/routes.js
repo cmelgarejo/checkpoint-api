@@ -22,16 +22,24 @@ Route.get('/', () => ({ up: true }))
 */
 
 /**
- * User token routes
+ * Auth signin routes
  */
 Route.group(() => {
-  // Route.post('users/token/refresh', 'UserController.refreshJWTKey')
-  Route.post('users/token', 'UserController.generateJWTKey')
-  Route.post('users/apikey', 'UserController.generateAPIKey')
+  Route.post('signin/refresh', 'UserController.refreshJWTKey')
+  Route.post('signin', 'UserController.generateJWTKey')
+  Route.post('apikey', 'UserController.generateAPIKey')
 })
-  .prefix('/v2')
+  .prefix('/v2/auth')
   .namespace('/v2')
   .middleware(['auth:basic'])
+
+Route.group(() => {
+  Route.get('facebook', 'AuthController.facebook')
+}).prefix('/v2/auth/social/authenticated').namespace('/v2')
+
+Route.get('facebook', async ({ ally }) => {
+  await ally.driver('facebook').redirect()
+}).prefix('/v2/auth/social')
 
 /**
  * Administrative routes

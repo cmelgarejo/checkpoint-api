@@ -18,7 +18,6 @@
 */
 
 const { Ignitor } = require('@adonisjs/ignitor')
-
 new Ignitor(require('@adonisjs/fold'))
   .appRoot(__dirname)
   .fireHttpServer()
@@ -28,6 +27,7 @@ new Ignitor(require('@adonisjs/fold'))
 
 // const https = require('https')
 // const pem = require('pem')
+// const path = require('path')
 
 // if (process.env.NODE_ENV === 'production') {
 //   const fs = require('fs')
@@ -43,15 +43,15 @@ new Ignitor(require('@adonisjs/fold'))
 //     })
 //     .catch(console.error)
 // } else {
-//    pem.createCertificate({ days: 1, selfSigned: true }, (error, keys) => {
-//      if (error) {
-//        return console.log(error)
-//      }
-//
-//      const options = {
-//        key: keys.serviceKey,
-//        cert: keys.certificate
-//      }
+//   pem.createCertificate({ days: 1, selfSigned: true }, (error, keys) => {
+//     if (error) {
+//       return console.log(error)
+//     }
+
+//     const options = {
+//       key: keys.serviceKey,
+//       cert: keys.certificate
+//     }
 //     new Ignitor(require('@adonisjs/fold'))
 //       .appRoot(__dirname)
 //       .fireHttpServer(handler => {
