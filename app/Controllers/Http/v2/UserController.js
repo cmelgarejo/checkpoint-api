@@ -74,8 +74,6 @@ class UserController {
    */
   async me ({ auth }) {
     const user = await auth.getUser()
-    user.active = !user.active
-    await user.save()
     return user
   }
 

@@ -13,8 +13,14 @@ class AssetGroup extends Model {
      * A hook to set de/activated time depending on the active status
      */
     this.addHook('beforeSave', async instance => {
-      if (!instance.dirty.active) { instance.deactivated_at = moment() }
-      if (instance.dirty.active) { instance.activated_at = moment() }
+      if (!instance.dirty.active) {
+        instance.deactivated_at = moment()
+        instance.activated_at = null
+      }
+      if (instance.dirty.active) {
+        instance.activated_at = moment()
+        instance.deactivated_at = null
+      }
     })
   }
   /**

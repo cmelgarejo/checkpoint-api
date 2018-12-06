@@ -22,8 +22,14 @@ class User extends Model {
       if (instance.dirty.password) {
         instance.password = await Hash.make(instance.password)
       }
-      if (!instance.dirty.active) { instance.deactivated_at = moment() }
-      if (instance.dirty.active) { instance.activated_at = moment() }
+      if (!instance.dirty.active) {
+        instance.deactivated_at = moment()
+        instance.activated_at = null
+      }
+      if (instance.dirty.active) {
+        instance.activated_at = moment()
+        instance.deactivated_at = null
+      }
     })
 
     /**
