@@ -2,7 +2,7 @@
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
-
+/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const User = use('App/Models/User')
 const JsonApiRB = use('JsonApiRecordBrowser')
 
@@ -64,6 +64,22 @@ class UserController {
   }
 
   /**
+   * Display the current user data.
+   * GET users/me
+   *
+   * @param {object} ctx
+   * @param {Request} ctx.request
+   * @param {Response} ctx.response
+   * @param {auth} ctx.auth
+   */
+  async me ({ auth }) {
+    const user = await auth.getUser()
+    user.active = !user.active
+    await user.save()
+    return user
+  }
+
+  /**
    * Delete a user with id.
    * DELETE users/:id
    *
@@ -103,7 +119,7 @@ class UserController {
   async generateJWTKey ({ response, auth }) {
     const user = await auth.getUser()
     const authAPI = await auth.authenticator('jwt')
-    const token = await authAPI.generate(user)
+    const token = await authAPI.withRefreshToken().generate(user)
     response.status(201)
     return token
   }

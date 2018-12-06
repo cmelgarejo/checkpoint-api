@@ -2,7 +2,21 @@
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
+/** @type  {import('moment')} */
+const moment = use('moment')
 class Device extends Model {
+  static boot () {
+    super.boot()
+
+    /**
+     * A hook to set de/activated time depending on the active status
+     */
+    this.addHook('beforeSave', async userInstance => {
+      if (!userInstance.dirty.active) { userInstance.deactivated_at = moment() }
+      if (userInstance.dirty.active) { userInstance.activated_at = moment() }
+    })
+  }
+
   /**
    * Gets the deviceType for this device
    *

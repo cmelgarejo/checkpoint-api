@@ -6,6 +6,9 @@ const Model = use('Model')
 /** @type {import('@adonisjs/framework/src/Hash')} */
 const Hash = use('Hash')
 
+/** @type  {import('moment')} */
+const moment = use('moment')
+
 class User extends Model {
   static boot () {
     super.boot()
@@ -14,11 +17,25 @@ class User extends Model {
      * A hook to hash the user password before saving
      * it to the database.
      */
-    this.addHook('beforeSave', async userInstance => {
-      if (userInstance.dirty.password) {
-        userInstance.password = await Hash.make(userInstance.password)
+    this.addHook('beforeSave', async instance => {
+      if (instance.dirty.aclRoles) delete instance.$attributes.aclRoles
+      if (instance.dirty.password) {
+        instance.password = await Hash.make(instance.password)
       }
+      if (!instance.dirty.active) { instance.deactivated_at = moment() }
+      if (instance.dirty.active) { instance.activated_at = moment() }
     })
+
+    /**
+     * Hook to get the roles of the user embedded into the object
+     */
+    this.addHook('afterFind', async instance => {
+      instance.aclRoles = await instance.getRoles()
+    })
+
+    // this.addHook('afterFetch', async instances => {
+    //   // TODO: Add role data to the list of instances
+    // })
   }
 
   static get traits () {

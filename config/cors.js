@@ -1,4 +1,5 @@
 'use strict'
+const Env = use('Env')
 
 module.exports = {
   /*
@@ -16,7 +17,7 @@ module.exports = {
   | Function - Receives the current origin and should return one of the above values.
   |
   */
-  origin: false,
+  origin: Env.get('APP_CORS_MODE', false), // By default not allowing CORS
 
   /*
   |--------------------------------------------------------------------------

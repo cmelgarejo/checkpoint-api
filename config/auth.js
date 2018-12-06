@@ -72,7 +72,9 @@ module.exports = {
     uid: 'email',
     password: 'password',
     options: {
-      secret: Env.get('APP_KEY')
+      secret: Env.get('APP_JWT_SECRET'),
+      algorithm: Env.get('APP_JWT_ALGORITHM', 'HS384'),
+      expiresIn: Env.get('APP_JWT_EXP', '1d')
     }
   },
 

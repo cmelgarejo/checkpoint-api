@@ -33,6 +33,9 @@ Route.group(() => {
   .namespace('/v2')
   .middleware(['auth:basic'])
 
+/**
+ * Auth social routes
+ */
 Route.group(() => {
   Route.get('facebook', 'AuthController.facebook')
 }).prefix('/v2/auth/social/authenticated').namespace('/v2')
@@ -58,6 +61,9 @@ Route.group(() => {
  * Common user routes
  */
 Route.group(() => {
+  // Checking `me`
+  Route.get('/auth/me', 'UserController.me')
+
   // Venues
   Route.resource('venues', 'VenueController').validator('StoreVenue')
 })
