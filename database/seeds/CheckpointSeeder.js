@@ -27,6 +27,7 @@ class CheckpointSeeder {
     const firstUser = await User.create({
       username: process.env.APP_ADMIN_USERNAME,
       password: process.env.APP_ADMIN_PASSWORD,
+      name: process.env.APP_ADMIN_NAME,
       email: process.env.APP_ADMIN_EMAIL
     })
     await firstUser.roles().attach(Object.values(roles))
@@ -35,6 +36,8 @@ class CheckpointSeeder {
     const secondUser = await User.create({
       username: 'test',
       password: 'test',
+      name: 'Test User',
+      profile_pic: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png',
       email: 'test@centralgps.net'
     })
     await secondUser.roles().attach(roles.user)
