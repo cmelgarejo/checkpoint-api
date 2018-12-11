@@ -3,6 +3,9 @@
 /** @type {import('@adonisjs/framework/src/Env')} */
 const Env = use('Env')
 
+/** @type {import('moment')} */
+const moment = use('moment')
+
 module.exports = {
 
   /*
@@ -201,7 +204,8 @@ module.exports = {
     console: {
       driver: 'console',
       name: 'checkpoint-api',
-      level: 'info'
+      level: 'info',
+      timestamp: moment().format()
     },
 
     /*
@@ -219,7 +223,8 @@ module.exports = {
       driver: 'file',
       name: 'checkpoint-api',
       filename: 'checkpoint-api.log',
-      level: 'info'
+      level: 'info',
+      timestamp: moment().format()
     }
   },
 
