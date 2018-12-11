@@ -72,9 +72,14 @@ class UserController {
    * @param {Response} ctx.response
    * @param {auth} ctx.auth
    */
-  async me ({ auth }) {
+  async me ({ response, auth }) {
     const user = await auth.getUser()
-    return user
+    if (!user.active) {
+      response.status(403)
+      return 'User inactive'
+    } else {
+      return user
+    }
   }
 
   /**
@@ -100,11 +105,16 @@ class UserController {
    */
   async generateAPIKey ({ response, auth }) {
     const user = await auth.getUser()
-    const authAPI = await auth.authenticator('api')
-    await authAPI.revokeTokensForUser(user)
-    const token = await authAPI.generate(user)
-    response.status(201)
-    return token
+    if (!user.active) {
+      response.status(403)
+      return 'User inactive'
+    } else {
+      const authAPI = await auth.authenticator('api')
+      await authAPI.revokeTokensForUser(user)
+      const token = await authAPI.generate(user)
+      response.status(201)
+      return token
+    }
   }
 
   /**
@@ -116,10 +126,15 @@ class UserController {
    */
   async generateJWTKey ({ response, auth }) {
     const user = await auth.getUser()
-    const authAPI = await auth.authenticator('jwt')
-    const token = await authAPI.withRefreshToken().generate(user)
-    response.status(201)
-    return token
+    if (!user.active) {
+      response.status(403)
+      return 'User inactive'
+    } else {
+      const authAPI = await auth.authenticator('jwt')
+      const token = await authAPI.withRefreshToken().generate(user)
+      response.status(201)
+      return token
+    }
   }
 
   /**
@@ -131,10 +146,15 @@ class UserController {
    */
   async refreshJWTKey ({ response, auth }) {
     const user = await auth.getUser()
-    const authAPI = await auth.authenticator('jwt')
-    const token = await authAPI.generate(user)
-    response.status(201)
-    return token
+    if (!user.active) {
+      response.status(403)
+      return 'User inactive'
+    } else {
+      const authAPI = await auth.authenticator('jwt')
+      const token = await authAPI.generate(user)
+      response.status(201)
+      return token
+    }
   }
 }
 
