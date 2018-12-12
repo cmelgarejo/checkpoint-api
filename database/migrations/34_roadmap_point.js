@@ -36,7 +36,7 @@ class RoadmapPointSchema extends Schema {
       table.boolean('active').defaultTo(true)
       table.timestamp('activated_at').defaultTo(this.fn.now())
       table.timestamp('deactivated_at')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

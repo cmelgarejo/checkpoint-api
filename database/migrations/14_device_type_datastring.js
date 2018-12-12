@@ -16,7 +16,7 @@ class DeviceTypeDatastringSchema extends Schema {
       table.text('description')
       table.text('regex')
       table.jsonb('metadata')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

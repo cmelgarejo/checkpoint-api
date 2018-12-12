@@ -18,7 +18,7 @@ class AssetGeofenceSchema extends Schema {
         .uuid('geofence_id')
         .references('id')
         .inTable(geofenceTableName)
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

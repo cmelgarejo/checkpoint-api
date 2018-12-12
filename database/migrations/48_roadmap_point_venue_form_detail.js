@@ -26,7 +26,7 @@ class RoadmapPointVenueFormDetailSchema extends Schema {
       table.decimal('qty')
       table.text('notes')
       table.jsonb('metadata')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

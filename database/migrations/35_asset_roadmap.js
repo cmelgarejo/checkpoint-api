@@ -18,7 +18,7 @@ class AssetRoadmapSchema extends Schema {
         .uuid('roadmap_id')
         .references('id')
         .inTable(roadmapTableName)
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

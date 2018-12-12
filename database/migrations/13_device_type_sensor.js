@@ -17,7 +17,7 @@ class DeviceTypeSensorSchema extends Schema {
       table.text('description')
       table.text('unit')
       table.jsonb('metadata')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

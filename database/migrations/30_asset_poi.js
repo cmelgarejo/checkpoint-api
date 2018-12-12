@@ -18,7 +18,7 @@ class AssetPoiSchema extends Schema {
         .uuid('poi_id')
         .references('id')
         .inTable(poiTableName)
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

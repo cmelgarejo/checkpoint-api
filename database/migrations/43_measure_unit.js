@@ -12,7 +12,7 @@ class MeasureUnitSchema extends Schema {
       table.text('description')
       table.text('notes')
       table.jsonb('metadata')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

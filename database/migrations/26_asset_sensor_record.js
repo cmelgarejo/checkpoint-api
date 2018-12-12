@@ -14,7 +14,7 @@ class AssetSensorRecordSchema extends Schema {
         .inTable(assetSensorTableName)
       table.text('value')
       table.jsonb('metadata')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

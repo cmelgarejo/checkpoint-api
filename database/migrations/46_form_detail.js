@@ -18,7 +18,7 @@ class FormSchema extends Schema {
       table.text('notes')
       table.jsonb('images')
       table.jsonb('metadata')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

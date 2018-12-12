@@ -18,7 +18,7 @@ class AssetDeviceSchema extends Schema {
         .uuid('device_id')
         .references('id')
         .inTable(deviceTableName)
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

@@ -30,7 +30,7 @@ class MarkActivitySchema extends Schema {
         .comment('Optional: when the event should take place')
       table.timestamp('executed_at')
       table.timestamp('finished_at')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

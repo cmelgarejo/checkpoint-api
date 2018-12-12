@@ -13,7 +13,7 @@ class DeviceTypeSchema extends Schema {
       table.integer('accuracy')
       table.jsonb('images')
       table.jsonb('metadata')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

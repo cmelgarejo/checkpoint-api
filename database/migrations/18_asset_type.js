@@ -16,7 +16,7 @@ class AssetTypeSchema extends Schema {
       table.timestamp('deactivated_at')
       table.jsonb('images')
       table.jsonb('metadata')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

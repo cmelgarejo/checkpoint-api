@@ -20,7 +20,7 @@ class AssetGroupDetailSchema extends Schema {
         .text('phones')
         .comment('The contacts that will be notified of any activity')
       table.jsonb('metadata')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

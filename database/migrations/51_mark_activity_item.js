@@ -25,7 +25,7 @@ class MarkActivityItemSchema extends Schema {
         .inTable(itemTableName)
       table.text('notes')
       table.decimal('qty')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

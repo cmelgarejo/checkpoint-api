@@ -17,7 +17,7 @@ class DeviceCommandQueueSchema extends Schema {
       table.jsonb('metadata')
       table.boolean('sent').defaultTo(false)
       table.timestamp('sent_at')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

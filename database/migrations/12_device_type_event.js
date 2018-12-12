@@ -16,7 +16,7 @@ class DeviceTypeEventSchema extends Schema {
       table.text('event_code')
       table.text('description')
       table.jsonb('metadata')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

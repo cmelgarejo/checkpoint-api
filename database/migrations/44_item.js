@@ -24,7 +24,7 @@ class ItemSchema extends Schema {
       table.decimal('max_qty')
       table.jsonb('images')
       table.jsonb('metadata')
-      table.timestamps()
+      table.timestamps(true, true)
       table.index('user_id')
     })
   }

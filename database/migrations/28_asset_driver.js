@@ -18,7 +18,7 @@ class AssetDriverSchema extends Schema {
         .uuid('device_id')
         .references('id')
         .inTable(driverTableName)
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

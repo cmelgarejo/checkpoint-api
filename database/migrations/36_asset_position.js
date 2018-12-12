@@ -32,7 +32,7 @@ class AssetPositionSchema extends Schema {
       table.text('ip_port')
       table.jsonb('metadata')
       table.timestamp('position_at')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

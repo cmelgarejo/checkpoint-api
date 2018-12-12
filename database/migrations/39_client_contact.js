@@ -21,7 +21,7 @@ class ClientContactSchema extends Schema {
       table.boolean('notify')
       table.jsonb('images')
       table.jsonb('metadata')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

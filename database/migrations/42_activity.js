@@ -17,7 +17,7 @@ class ActivitySchema extends Schema {
       table.boolean('event_trigger').defaultTo(false)
       table.boolean('private').defaultTo(false)
       table.jsonb('metadata')
-      table.timestamps()
+      table.timestamps(true, true)
       table.index('user_id')
     })
   }

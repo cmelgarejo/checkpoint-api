@@ -15,7 +15,7 @@ class TokensSchema extends Schema {
         .inTable(tokensTablename)
       table.text('ref')
       table.jsonb('metadata')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

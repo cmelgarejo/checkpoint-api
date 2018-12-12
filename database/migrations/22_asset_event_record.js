@@ -17,7 +17,7 @@ class AssetEventRecordSchema extends Schema {
       table.boolean('attended').defaultTo(false)
       table.jsonb('images')
       table.jsonb('metadata')
-      table.timestamps()
+      table.timestamps(true, true)
     })
   }
 

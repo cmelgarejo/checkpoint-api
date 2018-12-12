@@ -20,7 +20,7 @@ class ClientSchema extends Schema {
       table.text('description')
       table.jsonb('images')
       table.jsonb('metadata')
-      table.timestamps()
+      table.timestamps(true, true)
       table.index('user_id')
     })
   }

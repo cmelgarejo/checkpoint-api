@@ -49,7 +49,7 @@ class MarkSchema extends Schema {
       table.timestamp('executed_at')
       table.timestamp('finished_at')
       table.timestamp('position_at')
-      table.timestamps()
+      table.timestamps(true, true)
       table.index('user_id')
     })
   }
