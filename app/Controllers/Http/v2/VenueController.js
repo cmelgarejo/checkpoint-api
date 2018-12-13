@@ -12,6 +12,24 @@ const JsonApiRB = use('JsonApiRecordBrowser')
  */
 class VenueController {
   /**
+   * Get a total count of venues for a given user.
+   * GET venues/count
+   *
+   * @param {object} ctx
+   * @param {Response} ctx.response
+   */
+  async count ({ auth, response }) {
+    const user = await auth.getUser()
+    if (!user.active) {
+      response.status(403)
+      return 'User inactive'
+    } else {
+      const count = await user.venues().getCount()
+      return { total: Number(count) }
+    }
+  }
+
+  /**
    * Show a list of all venues.
    * GET venues
    *

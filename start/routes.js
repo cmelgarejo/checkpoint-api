@@ -65,6 +65,7 @@ Route.group(() => {
   Route.get('/auth/me', 'UserController.me')
 
   // Venues
+  Route.get('/venues/count', 'VenueController.count')
   Route.resource('venues', 'VenueController').validator('StoreVenue')
 })
   .prefix('/v2')
