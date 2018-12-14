@@ -1,4 +1,6 @@
 'use strict'
+/** @type {typeof import('@adonisjs/framework/src/Logger')} */
+const Logger = use('Logger')
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +19,7 @@ module.exports = async (permissions = undefined) => {
   role.slug = 'administrator'
   role.description = 'Manage administration privileges'
   if (await role.save()) {
-    console.info(`Created role: [${role.name}]`)
+    Logger.info(`Created role: [${role.name}]`)
     if (permissions) await role.permissions().attach([...permissions['users']])
   }
   return { [role.slug]: role.id }

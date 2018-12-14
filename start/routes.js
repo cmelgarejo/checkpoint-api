@@ -55,7 +55,7 @@ Route.group(() => {
 })
   .prefix('/v2')
   .namespace('/v2')
-  .middleware(['jsonApi', 'auth:jwt,api', 'tokenMetrics', 'is: administrator'])
+  .middleware(['jsonApi', 'auth:jwt,api', 'is: administrator'])
 
 /**
  * Common user routes
@@ -73,6 +73,5 @@ Route.group(() => {
   .middleware([
     'jsonApi',
     'auth:jwt,api',
-    'tokenMetrics',
     'is: administrator or user'
   ])

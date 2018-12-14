@@ -1,4 +1,6 @@
 'use strict'
+/** @type {typeof import('@adonisjs/framework/src/Logger')} */
+const Logger = use('Logger')
 
 /*
 |--------------------------------------------------------------------------
@@ -55,5 +57,5 @@ module.exports = async () => {
   // measureUnit.metadata = {}
   await measureUnit.save()
 
-  console.info('Created default measure units')
+  Logger.info('Created default measure units')
 }

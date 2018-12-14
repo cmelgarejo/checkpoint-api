@@ -3,8 +3,9 @@
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
+/** @type {typeof import('@adonisjs/framework/src/Logger')} */
 const User = use('App/Models/User')
-
+const Logger = use('Logger')
 /**
  * Resourceful controller for interacting with users
  */
@@ -20,7 +21,7 @@ class AuthController {
   async facebook ({ ally, request, response }) {
     const user = await ally.driver('facebook').getUser()
     const dbUser = await User.findByOrFail('email', user.getEmail)
-    console.log(dbUser)
+    Logger.info(dbUser)
     await User.create({
       email: user.getEmail(),
       username: user.getEmail(),

@@ -2,8 +2,6 @@
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
-/** @type  {import('moment')} */
-const moment = use('moment')
 class Asset extends Model {
   static boot () {
     super.boot()
@@ -11,16 +9,8 @@ class Asset extends Model {
     /**
      * A hook to set de/activated time depending on the active status
      */
-    this.addHook('beforeSave', async instance => {
-      if (!instance.dirty.active) {
-        instance.deactivated_at = moment()
-        instance.activated_at = null
-      }
-      if (instance.dirty.active) {
-        instance.activated_at = moment()
-        instance.deactivated_at = null
-      }
-    })
+    this.addHook('beforeSave', 'ActivateHook.method')
+    this.addTrait('@provider:Jsonable', [ 'images', 'metadata' ])
   }
 
   /**

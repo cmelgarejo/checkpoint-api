@@ -1,4 +1,6 @@
 'use strict'
+/** @type {typeof import('@adonisjs/framework/src/Logger')} */
+const Logger = use('Logger')
 
 /*
 |--------------------------------------------------------------------------
@@ -77,5 +79,5 @@ module.exports = async () => {
   // assetType.metadata = {}
   await assetType.save()
 
-  console.info('Created default asset types')
+  Logger.info('Created default asset types')
 }

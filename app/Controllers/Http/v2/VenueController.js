@@ -20,13 +20,8 @@ class VenueController {
    */
   async count ({ auth, response }) {
     const user = await auth.getUser()
-    if (!user.active) {
-      response.status(403)
-      return 'User inactive'
-    } else {
-      const count = await user.venues().getCount()
-      return { total: Number(count) }
-    }
+    const count = await user.venues().getCount()
+    return { total: Number(count) }
   }
 
   /**
@@ -37,7 +32,7 @@ class VenueController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async index ({ auth, request, params }) {
+  async index ({ auth, request }) {
     // if admin has to see all?
     // if has permissions, show all venues
     const res = await JsonApiRB.model(Venue)
@@ -55,8 +50,8 @@ class VenueController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update ({ auth, request, response, params }) {
-    const { id } = params
+  async update ({ auth, request, response }) {
+    const { id } = request.body
     const venueQuery = await Venue.query().where({
       id: id,
       user_id: auth.user.id
@@ -67,7 +62,6 @@ class VenueController {
         ...await Venue.cleanParams(request.post()),
         user_id: undefined
       }
-      console.log('allowedParams: ', allowedParams)
       venue.merge({
         ...allowedParams // ...request.post()
       })
@@ -99,8 +93,8 @@ class VenueController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params }) {
-    const { id } = params
+  async destroy ({ request }) {
+    const { id } = request.body
     const venue = await Venue.findOrFail(id)
     venue.delete()
   }

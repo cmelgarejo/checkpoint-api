@@ -6,7 +6,7 @@ const tableName = 'venues'
 const userTableName = 'users'
 const clientTableName = 'clients'
 const clientContactTableName = 'client_contacts'
-
+const venueTypeTableName = 'venue_types'
 class VenueSchema extends Schema {
   up () {
     this.create(tableName, table => {
@@ -23,6 +23,10 @@ class VenueSchema extends Schema {
         .references('id')
         .inTable(clientTableName)
         .nullable()
+      table
+        .integer('venue_type_id')
+        .references('id')
+        .inTable(venueTypeTableName)
       table
         .integer('client_contact_id')
         .references('id')

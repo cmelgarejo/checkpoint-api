@@ -1,4 +1,6 @@
 'use strict'
+/** @type {typeof import('@adonisjs/framework/src/Logger')} */
+const Logger = use('Logger')
 
 class CleanParams {
   async register (Model, customOptions = {}) {
@@ -14,7 +16,7 @@ class CleanParams {
         return params
       }
     } catch (error) {
-      console.error(error)
+      Logger.error(error)
       return null
     }
   }

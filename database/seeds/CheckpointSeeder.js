@@ -1,5 +1,6 @@
 'use strict'
-
+/** @type {typeof import('@adonisjs/framework/src/Logger')} */
+const Logger = use('Logger')
 /*
 |--------------------------------------------------------------------------
 | CheckpointSeeder
@@ -19,20 +20,21 @@ const createVenues = use('./Checkpoint/Venues')
 
 class CheckpointSeeder {
   async run () {
-    console.info('>>> Creating Roles and Permissions')
+    Logger.info('>>> Creating Roles and Permissions')
     const permissions = await createAclPermissions()
     const roles = await createAclRoles(permissions)
 
-    console.info('>>> Creating default user')
+    Logger.info('>>> Creating default user')
     const firstUser = await User.create({
       username: process.env.APP_ADMIN_USERNAME,
       password: process.env.APP_ADMIN_PASSWORD,
       name: process.env.APP_ADMIN_NAME,
+      profile_pic: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png',
       email: process.env.APP_ADMIN_EMAIL
     })
     await firstUser.roles().attach(Object.values(roles))
 
-    console.info('>>> Creating test user')
+    Logger.info('>>> Creating test user')
     const secondUser = await User.create({
       username: 'test',
       password: 'test',
@@ -42,7 +44,7 @@ class CheckpointSeeder {
     })
     await secondUser.roles().attach(roles.user)
 
-    console.info('>>> Adding default reference table values')
+    Logger.info('>>> Adding default reference table values')
     await createVenueTypes()
     await createMeasureUnits()
     await createAssetTypes()

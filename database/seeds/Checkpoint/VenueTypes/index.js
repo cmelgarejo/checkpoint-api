@@ -1,4 +1,6 @@
 'use strict'
+/** @type {typeof import('@adonisjs/framework/src/Logger')} */
+const Logger = use('Logger')
 
 /*
 |--------------------------------------------------------------------------
@@ -55,5 +57,12 @@ module.exports = async () => {
   // venueType.metadata = {}
   await venueType.save()
 
-  console.info('Created default venue types')
+  venueType = new VenueType()
+  venueType.name = 'Shopping Mall'
+  venueType.description = 'Shopping Mall'
+  // venueType.images = {}
+  // venueType.metadata = {}
+  await venueType.save()
+
+  Logger.info('Created default venue types')
 }

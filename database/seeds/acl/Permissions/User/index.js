@@ -1,4 +1,6 @@
 'use strict'
+/** @type {typeof import('@adonisjs/framework/src/Logger')} */
+const Logger = use('Logger')
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +43,7 @@ module.exports = async () => {
   await permission.save()
   permissionIds.push(permission.id)
 
-  console.info('Created permissions: [users]')
+  Logger.info('Created permissions: [users]')
 
   return permissionIds
 }

@@ -1,4 +1,6 @@
 'use strict'
+/** @type {typeof import('@adonisjs/framework/src/Logger')} */
+const Logger = use('Logger')
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +15,7 @@ const Factory = use('Factory')
 
 class UserSeeder {
   async run () {
-    console.info('>>> Creating user')
+    Logger.info('>>> Creating user')
     await Factory.model('App/Models/User').create()
   }
 }

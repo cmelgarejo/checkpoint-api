@@ -3,9 +3,10 @@
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
+/** @type {typeof import('@adonisjs/framework/src/Logger')} */
+const Logger = use('Logger')
 const User = use('App/Models/User')
 const JsonApiRB = use('JsonApiRecordBrowser')
-
 /**
  * Resourceful controller for interacting with users
  */
@@ -18,7 +19,7 @@ class UserController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async index ({ request, params }) {
+  async index ({ request }) {
     // if has permissions, show all users
     const res = await JsonApiRB.model(User)
     return res
@@ -34,8 +35,8 @@ class UserController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update ({ request, params }) {
-    const { id } = params
+  async update ({ request }) {
+    const { id } = request.body
     const user = await User.findOrFail(id)
     const allowedParams = await User.cleanParams(request.post())
     user.merge({
@@ -43,7 +44,7 @@ class UserController {
     })
     const result = await user.save()
     if (!result) {
-      console.error(result)
+      Logger.error(`Error updating user: ${result}`)
       throw new Error('Could not be saved')
     }
     return user
@@ -74,12 +75,7 @@ class UserController {
    */
   async me ({ response, auth }) {
     const user = await auth.getUser()
-    if (!user.active) {
-      response.status(403)
-      return 'User inactive'
-    } else {
-      return user
-    }
+    return user
   }
 
   /**
@@ -90,8 +86,8 @@ class UserController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params }) {
-    const { id } = params
+  async destroy ({ request }) {
+    const { id } = request.body
     const user = await User.findOrFail(id)
     user.delete()
   }
@@ -105,16 +101,11 @@ class UserController {
    */
   async generateAPIKey ({ response, auth }) {
     const user = await auth.getUser()
-    if (!user.active) {
-      response.status(403)
-      return 'User inactive'
-    } else {
-      const authAPI = await auth.authenticator('api')
-      await authAPI.revokeTokensForUser(user)
-      const token = await authAPI.generate(user)
-      response.status(201)
-      return token
-    }
+    const authAPI = await auth.authenticator('api')
+    await authAPI.revokeTokensForUser(user)
+    const token = await authAPI.generate(user)
+    response.status(201)
+    return token
   }
 
   /**
@@ -126,15 +117,11 @@ class UserController {
    */
   async generateJWTKey ({ response, auth }) {
     const user = await auth.getUser()
-    if (!user.active) {
-      response.status(403)
-      return 'User inactive'
-    } else {
-      const authAPI = await auth.authenticator('jwt')
-      const token = await authAPI.withRefreshToken().generate(user)
-      response.status(201)
-      return token
-    }
+    const authAPI = await auth.authenticator('jwt')
+    await authAPI.revokeTokensForUser(user)
+    const token = await authAPI.withRefreshToken().generate(user)
+    response.status(201)
+    return token
   }
 
   /**
@@ -146,15 +133,10 @@ class UserController {
    */
   async refreshJWTKey ({ response, auth }) {
     const user = await auth.getUser()
-    if (!user.active) {
-      response.status(403)
-      return 'User inactive'
-    } else {
-      const authAPI = await auth.authenticator('jwt')
-      const token = await authAPI.generate(user)
-      response.status(201)
-      return token
-    }
+    const authAPI = await auth.authenticator('jwt')
+    const token = await authAPI.generate(user)
+    response.status(201)
+    return token
   }
 }
 

@@ -21,6 +21,7 @@ class UserSchema extends Schema {
       table.string('password', 60).notNullable()
       table.text('name')
       table.text('profile_pic')
+      table.float('timezone', 2, 1).defaultTo(0)
       table.jsonb('metadata')
       table.boolean('active').defaultTo(true)
       table.timestamp('activated_at').defaultTo(this.fn.now())

@@ -12,7 +12,7 @@ const Server = use('Server')
 | match.
 |
 */
-const globalMiddleware = ['Adonis/Middleware/BodyParser']
+const globalMiddleware = ['Adonis/Middleware/BodyParser', 'App/Middleware/ActiveUser', 'App/Middleware/TokenMetrics']
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +33,6 @@ const globalMiddleware = ['Adonis/Middleware/BodyParser']
 */
 const namedMiddleware = {
   auth: 'Adonis/Middleware/Auth',
-  tokenMetrics: 'App/Middleware/TokenMetrics',
   is: 'Adonis/Acl/Is',
   can: 'Adonis/Acl/Can',
   jsonApi: 'JsonApi/Middleware/Specification'

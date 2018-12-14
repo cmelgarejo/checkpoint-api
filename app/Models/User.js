@@ -6,9 +6,6 @@ const Model = use('Model')
 /** @type {import('@adonisjs/framework/src/Hash')} */
 const Hash = use('Hash')
 
-/** @type  {import('moment')} */
-const moment = use('moment')
-
 class User extends Model {
   static boot () {
     super.boot()
@@ -22,14 +19,6 @@ class User extends Model {
       if (instance.dirty.password) {
         instance.password = await Hash.make(instance.password)
       }
-      if (!instance.dirty.active) {
-        instance.deactivated_at = moment()
-        instance.activated_at = null
-      }
-      if (instance.dirty.active) {
-        instance.activated_at = moment()
-        instance.deactivated_at = null
-      }
     })
 
     /**
@@ -42,6 +31,12 @@ class User extends Model {
     // this.addHook('afterFetch', async instances => {
     //   // TODO: Add role data to the list of instances
     // })
+
+    /**
+     * A hook to set de/activated time depending on the active status
+     */
+    this.addHook('beforeSave', 'ActivateHook.method')
+    this.addTrait('@provider:Jsonable', [ 'metadata' ])
   }
 
   static get traits () {
