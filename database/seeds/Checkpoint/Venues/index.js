@@ -40,45 +40,40 @@ module.exports = async (users) => {
   // venue.metadata = {}
   await venue.save()
 
-  venue = new Venue()
-  venue.user_id = users[1].id
-  venue.name = 'Pinedo Shopping'
-  venue.description = 'Centro comercial Pinedo Shopping'
-  venue.address = 'Av. Mariscal López, San Lorenzo'
-  venue.lat = -25.323770
-  venue.lon = -57.520440
-  venue.venue_type_id = venueTypes.shoppingMall
-  venue.images = [{ id: uuid.v4(), resource: 'http://www.pinedo.com.py/wp-content/uploads/2016/03/Website7.jpg' }]
-  await venue.save()
-  venue.user_id = users[0].id
-  await venue.save()
+  for (let i = 0; i < 2; i++) {
+    venue = new Venue()
+    venue.user_id = users[i].id
+    venue.name = 'Pinedo Shopping'
+    venue.description = 'Centro comercial Pinedo Shopping'
+    venue.address = 'Av. Mariscal López, San Lorenzo'
+    venue.lat = -25.323770
+    venue.lon = -57.520440
+    venue.venue_type_id = venueTypes.shoppingMall
+    venue.images = [{ id: uuid.v4(), resource: 'http://www.pinedo.com.py/wp-content/uploads/2016/03/Website7.jpg' }]
+    await venue.save()
 
-  venue = new Venue()
-  venue.user_id = users[1].id
-  venue.name = 'Shopping Multiplaza'
-  venue.description = 'Centro comercial Multiplaza'
-  venue.address = 'PY, 4501, Av Eusebio Ayala, Asunción'
-  venue.lat = -25.317017
-  venue.lon = -57.571728
-  venue.venue_type_id = venueTypes.shoppingMall
-  venue.images = [{ id: uuid.v4(), resource: 'https://farm5.staticflickr.com/4545/38153142764_aac5aac2a5_z.jpg' }]
-  await venue.save()
-  venue.user_id = users[0].id
-  await venue.save()
+    venue = new Venue()
+    venue.name = 'Shopping Multiplaza'
+    venue.user_id = users[i].id
+    venue.description = 'Centro comercial Multiplaza'
+    venue.address = 'PY, 4501, Av Eusebio Ayala, Asunción'
+    venue.lat = -25.317017
+    venue.lon = -57.571728
+    venue.venue_type_id = venueTypes.shoppingMall
+    venue.images = [{ id: uuid.v4(), resource: 'https://farm5.staticflickr.com/4545/38153142764_aac5aac2a5_z.jpg' }]
+    await venue.save()
 
-  venue = new Venue()
-  venue.user_id = users[1].id
-  venue.name = 'Punto Farma'
-  venue.description = 'Farmacia Punto Farma'
-  venue.address = 'PY, 4501, Av Eusebio Ayala, Asunción'
-  venue.lat = -25.301216
-  venue.lon = -57.565166
-  venue.venue_type_id = venueTypes.pharmacy
-  venue.images = [{ id: uuid.v4(), resource: 'https://lh5.googleusercontent.com/p/AF1QipM3T1PhJ9eD2oAVT30k6vlMJEBtMwCyPXrelSEk=s396-k-no' }]
-  await venue.save()
-  venue.user_id = users[0].id
-  await venue.save()
-  // -25.301216, -57.565166
+    venue = new Venue()
+    venue.user_id = users[i].id
+    venue.name = 'Punto Farma'
+    venue.description = 'Farmacia Punto Farma'
+    venue.address = 'PY, 4501, Av Eusebio Ayala, Asunción'
+    venue.lat = -25.301216
+    venue.lon = -57.565166
+    venue.venue_type_id = venueTypes.pharmacy
+    venue.images = [{ id: uuid.v4(), resource: 'https://lh5.googleusercontent.com/p/AF1QipM3T1PhJ9eD2oAVT30k6vlMJEBtMwCyPXrelSEk=s396-k-no' }]
+    await venue.save()
+  }
 
   Logger.info('Created default venues')
 }

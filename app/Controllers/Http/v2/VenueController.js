@@ -35,7 +35,6 @@ class VenueController {
     // if admin has to see all?
     // if has permissions, show all venues
     const res = await JsonApiRB.model(Venue)
-    console.log(auth.user.id)
     return res
       .request(request.get()) // handle request
       .filter({ user_id: auth.user.id })
