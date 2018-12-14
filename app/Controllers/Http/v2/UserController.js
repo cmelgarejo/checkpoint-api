@@ -74,8 +74,7 @@ class UserController {
    * @param {auth} ctx.auth
    */
   async me ({ response, auth }) {
-    const user = await auth.getUser()
-    return user
+    return auth.user
   }
 
   /**
@@ -100,10 +99,9 @@ class UserController {
    * @param {Response} ctx.response
    */
   async generateAPIKey ({ response, auth }) {
-    const user = await auth.getUser()
     const authAPI = await auth.authenticator('api')
-    await authAPI.revokeTokensForUser(user)
-    const token = await authAPI.generate(user)
+    await authAPI.revokeTokensForUser(auth.user)
+    const token = await authAPI.generate(auth.user)
     response.status(201)
     return token
   }
@@ -116,10 +114,9 @@ class UserController {
    * @param {Response} ctx.response
    */
   async generateJWTKey ({ response, auth }) {
-    const user = await auth.getUser()
     const authAPI = await auth.authenticator('jwt')
-    await authAPI.revokeTokensForUser(user)
-    const token = await authAPI.withRefreshToken().generate(user)
+    await authAPI.revokeTokensForUser(auth.user)
+    const token = await authAPI.withRefreshToken().generate(auth.user)
     response.status(201)
     return token
   }
@@ -132,9 +129,8 @@ class UserController {
    * @param {Response} ctx.response
    */
   async refreshJWTKey ({ response, auth }) {
-    const user = await auth.getUser()
     const authAPI = await auth.authenticator('jwt')
-    const token = await authAPI.generate(user)
+    const token = await authAPI.generate(auth.user)
     response.status(201)
     return token
   }

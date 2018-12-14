@@ -19,8 +19,7 @@ class VenueController {
    * @param {Response} ctx.response
    */
   async count ({ auth, response }) {
-    const user = await auth.getUser()
-    const count = await user.venues().getCount()
+    const count = await auth.user.venues().getCount()
     return { total: Number(count) }
   }
 
@@ -36,6 +35,7 @@ class VenueController {
     // if admin has to see all?
     // if has permissions, show all venues
     const res = await JsonApiRB.model(Venue)
+    console.log(auth.user.id)
     return res
       .request(request.get()) // handle request
       .filter({ user_id: auth.user.id })
