@@ -6,7 +6,8 @@
 /** @type {import('@adonisjs/framework/src/Logger')} */
 /** @type {import('adonis-acl/src/Exceptions/ForbiddenException')} */
 const Logger = use('Logger')
-const ForbiddenException = use('adonis-acl/src/exceptions/ForbiddenException')
+// const ForbiddenException = use('adonis-acl/src/exceptions/ForbiddenException')
+const ForbiddenException = use('App/Exceptions/ForbiddenException')
 
 class ActiveUser {
   /**
