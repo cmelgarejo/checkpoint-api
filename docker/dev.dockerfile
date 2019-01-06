@@ -1,10 +1,10 @@
-FROM node:11.4-alpine
+FROM node:11.6-alpine
 
 RUN set -xe && apk add --no-cache bash sudo git openssh
 
-WORKDIR /. /app
+WORKDIR /app
 
-COPY /. .
+ADD . /app
 
 RUN npm i
 

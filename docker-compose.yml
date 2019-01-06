@@ -20,7 +20,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - .:/code
+      - .:/app
     depends_on:
       - checkpoint-db
     environment:
@@ -46,7 +46,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - .:/code
+      - .:/app
     depends_on:
       - checkpoint-db
     environment:

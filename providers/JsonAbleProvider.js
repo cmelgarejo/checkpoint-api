@@ -13,7 +13,7 @@ class JsonAbleProvider extends ServiceProvider {
    * @return {void}
    */
   register () {
-    const Jsonable = require('../app/Models/Traits/Jsonable')
+    const Jsonable = require('../app/Models/Traits/JsonAble')
     this.app.bind('Adonis/Traits/Jsonable', () => new Jsonable())
     this.app.alias('Adonis/Traits/Jsonable', 'Jsonable')
   }
