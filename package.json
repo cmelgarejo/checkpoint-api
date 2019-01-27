@@ -33,8 +33,8 @@
     "@adonisjs/vow": "^1.0.17",
     "@dinevillar/adonis-json-api-serializer": "github:cmelgarejo/adonis-json-api-serializer",
     "adonis-acl": "github:cmelgarejo/adonis-acl",
-    "pem": "^1.13.2",
-    "pg": "^7.7.1"
+    "pem": "^1.14.1",
+    "pg": "^7.8.0"
   },
   "devDependencies": {
     "standard": "^12.0.1"
